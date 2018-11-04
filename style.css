@@ -57,6 +57,8 @@ img {
 .counter {
   position: absolute;
   top: 5px;
+  left: 0;
+  right: 0;
   font-weight: bold;
   font-size: 3rem;
 }

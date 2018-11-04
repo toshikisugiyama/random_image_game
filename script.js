@@ -19,14 +19,14 @@
         reset.className = 'button reset';
         next.click();
         c = 1;
-        counter.innerHTML = '<span id="counter" class="counter">' + c + '</span>';
+        counter.innerHTML = c;
       });
 
       next.addEventListener('click',function(){
         const randNum = Math.floor(Math.random()*char);
         drawing.src = 'img/' + randNum + '.png';
         c++;
-        counter.innerHTML = '<span id="counter" class="counter">' + c + '</span>';
+        counter.innerHTML = c;
       });
 
       image.addEventListener('click',function(){
