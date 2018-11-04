@@ -7,25 +7,34 @@
       const drawing = document.getElementById('drawing');
       const image = document.getElementById('img_box');
       const reset = document.getElementById('reset');
+      const counter = document.getElementById('counter');
+      let c = 0;
 
       start.addEventListener('click',function(){
         start.className = 'button start hidden';
         next.className = 'button next';
         question.className = 'question hidden';
         drawing.className = '';
+        counter.className = 'counter';
         reset.className = 'button reset';
         next.click();
-        // const randNum = Math.floor(Math.random()*char);
-        // drawing.src = 'img/' + randNum + '.png';
+        c = 1;
+        counter.innerHTML = '<span id="counter" class="counter">' + c + '</span>';
       });
 
       next.addEventListener('click',function(){
         const randNum = Math.floor(Math.random()*char);
         drawing.src = 'img/' + randNum + '.png';
+        c++;
+        counter.innerHTML = '<span id="counter" class="counter">' + c + '</span>';
       });
 
       image.addEventListener('click',function(){
-        start.click();
+        if (c===0) {
+          start.click();
+        }else{
+          next.click();
+        }
       });
 
       reset.addEventListener('click',function(){
@@ -34,6 +43,19 @@
         question.className = 'question';
         drawing.className = 'hidden';
         reset.className = 'button reset hidden'
+        counter.className = 'counter hidden';
+        c = 0;
       });
+
+
+      function escapeHtml(str) {
+        str = str.replace(/&/g, '&amp;');
+        str = str.replace(/</g, '&lt;');
+        str = str.replace(/>/g, '&gt;');
+        str = str.replace(/"/g, '&quot;');
+        str = str.replace(/'/g, '&#39;');
+        return str;
+      }
+
 
     })();

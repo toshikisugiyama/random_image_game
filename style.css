@@ -11,7 +11,7 @@ body {
   width: 100%;
   height: 100vh;
   background: #000;
-  color: #fff;
+  color: #dbe7ed;
   overflow: hidden;
 }
 
@@ -54,6 +54,12 @@ img {
   transition: 2s;
 }
 
+.counter {
+  position: absolute;
+  top: 5px;
+  font-weight: bold;
+  font-size: 3rem;
+}
 
 .button {
   background: tomato;
@@ -74,7 +80,7 @@ img {
   position: absolute;
   left: 16px;
   bottom: 16px;
-  background: #000;
+  background: transparent;
   color: #fff;
   width: 60px;
   height: 60px;
@@ -87,7 +93,7 @@ img {
   left: 4px;
   bottom: 4px;
   content: '';
-  background: #fff;
+  background: #dbe7ed;
   width: 50px;
   height: 50px;
   border: none;
