@@ -1,6 +1,6 @@
     (function(){
       'use strict';
-      const char = 7;
+      const char = 8;
       const start = document.getElementById('start');
       const next = document.getElementById('next');
       const question = document.getElementById('question');
