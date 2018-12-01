@@ -110,7 +110,7 @@ img {
 
 
 footer {
-  position: absolute;
+  position: relative;
   bottom: 0;
   left: 0;
   right: 0;
@@ -118,7 +118,7 @@ footer {
 }
 
 .copyright {
-  position: absolute;
+  position: relative;
   bottom: 3px;
   right: 0;
   left: 0;
