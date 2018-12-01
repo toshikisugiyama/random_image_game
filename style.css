@@ -31,8 +31,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  min-height: 568px;
+  height: calc(100vh - 30px);
 }
 
 .img-box {
@@ -115,6 +114,7 @@ footer {
   bottom: 0;
   left: 0;
   right: 0;
+  height: 30px;
 }
 
 .copyright {
