@@ -32,6 +32,7 @@ main {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  min-height: 568px;
 }
 
 .img-box {
@@ -63,6 +64,10 @@ img {
   font-size: 3rem;
 }
 
+.finished {
+  font-size: 3rem;
+}
+
 .button {
   background: tomato;
   width: 120px;
@@ -71,10 +76,12 @@ img {
   border-radius: 5px;
   font-size: 1.8rem;
   user-select: none;
+  opacity: 0.8;
+  transition: .6s;
 }
 
 .button:hover {
-  opacity: 0.8;
+  opacity: 1;
   transition: .6s;
 }
 

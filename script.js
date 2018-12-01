@@ -1,13 +1,14 @@
     (function(){
       'use strict';
-      const char = 8;
-      const start = document.getElementById('start');
-      const next = document.getElementById('next');
-      const question = document.getElementById('question');
-      const drawing = document.getElementById('drawing');
-      const image = document.getElementById('img_box');
-      const reset = document.getElementById('reset');
-      const counter = document.getElementById('counter');
+      const char = 8,
+            start = document.getElementById('start'),
+            next = document.getElementById('next'),
+            finished = document.getElementById('finished'),
+            question = document.getElementById('question'),
+            drawing = document.getElementById('drawing'),
+            image = document.getElementById('img_box'),
+            reset = document.getElementById('reset'),
+            counter = document.getElementById('counter');
       let c = 0;
 
       start.addEventListener('click',function(){
@@ -18,15 +19,23 @@
         counter.className = 'counter';
         reset.className = 'button reset';
         next.click();
-        c = 1;
+        c = 20;
         counter.innerHTML = c;
       });
 
       next.addEventListener('click',function(){
         const randNum = Math.floor(Math.random()*char);
         drawing.src = 'img/' + randNum + '.png';
-        c++;
+        c--;
         counter.innerHTML = c;
+        finished.className = 'hidden';
+        if (c===0) {
+          drawing.className = 'hidden';
+          counter.className = 'counter hidden';
+          start.className = 'button start';
+          next.className = 'button next hidden';
+          finished.className = 'finished';
+        }
       });
 
       image.addEventListener('click',function(){
@@ -44,6 +53,7 @@
         drawing.className = 'hidden';
         reset.className = 'button reset hidden'
         counter.className = 'counter hidden';
+        finished.className = 'finished hidden';
         c = 0;
       });
 
