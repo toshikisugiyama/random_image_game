@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
-import Question from './Question'
-import Character from './Character'
+import SwitchQuestionCharacter from './SwitchQuestionCharacter'
 import Finished from './Finished'
 import Counter from './Counter'
 import Button from './Button'
@@ -14,8 +13,7 @@ const Main = () => {
   return(
     <main>
       <div id="img_box" className="img-box">
-        <Question count={clickCount}/>
-        <Character count={clickCount}/>
+        <SwitchQuestionCharacter count={clickCount}/>
         <Finished  count={clickCount}/>
       </div>
       <Counter count={clickCount}/>
