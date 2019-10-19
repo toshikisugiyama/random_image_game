@@ -5,6 +5,6 @@ const SwitchQuestionCharacter = props => {
   if(props.count===0){
     return <Question />
   }
-  return <Character />
+  return <Character count={props.count} />
 }
 export default SwitchQuestionCharacter
