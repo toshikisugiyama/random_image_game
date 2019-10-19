@@ -1,22 +1,20 @@
-import React, {useState} from 'react'
-const Button = () => {
-  const [count,setCount] = useState(0)
-  let button = (count === 0)?{
-    content: 'スタート',
-    color: 'start'
-  }:{
-    content: 'つぎへ',
-    color: 'next'
+import React from 'react'
+const Button = props => {
+  let value = 'スタート'
+  let id = 'start'
+  if(props.count>0){
+    value = 'つぎへ'
+    id = 'next'
   }
-    return(
-      <button
-        onClick={() => setCount(count + 1)}
-        type="button"
-        id="start"
-        className={`button ${button.color}`}
-      >
-        {button.content}
-      </button>
-    )
+  return(
+    <button
+      onClick={props.onClick}
+      type="button"
+      id={id}
+      className={`button ${id}`}
+    >
+      {value}
+    </button>
+  )
 }
 export default Button
