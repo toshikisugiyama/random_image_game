@@ -10,11 +10,11 @@ npm start
 npm i -D node-sass-package-importer
 npm i -S html5-reset
 ```
-1. style.scss ファイルを作成する。
+2. style.scss ファイルを作成する。
 ```
 touch src/style.scss
 ```
-1. scss reset.css を読み込む。
+3. scss reset.css を読み込む。
 ```scss:style.scss
 @import "~html5-reset";
 ```
@@ -23,7 +23,7 @@ touch src/style.scss
 ```
 touch .editorconfig
 ```
-1. .editorconfig ファイルを編集する。
+2. .editorconfig ファイルを編集する。
 ```
 root = true
 
