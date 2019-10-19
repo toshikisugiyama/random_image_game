@@ -3,8 +3,6 @@ const Character = () => {
   return(
     <img
       src="./img/0.png"
-      className="hidden"
-      id="drawing"
       alt="character"
       width="100%"
       height="100%"
