@@ -1,3 +1,47 @@
+### Create React App を使う
+```
+npx create-react-app my-app
+cd my-app
+npm start
+```
+### reset.css を使得るようにする
+1. node-sass-package-importer と css パッケージ をインストールする。
+```
+npm i -D node-sass-package-importer
+npm i -S html5-reset
+```
+1. style.scss ファイルを作成する。
+```
+touch src/style.scss
+```
+1. scss reset.css を読み込む。
+```scss:style.scss
+@import "~html5-reset";
+```
+### .editorconfig の設定
+1. .editorconfig ファイルを作成する。
+```
+touch .editorconfig
+```
+1. .editorconfig ファイルを編集する。
+```
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.{yml,yaml,js,json,html,scss,blade.php}]
+indent_size = 2
+```
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
