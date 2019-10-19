@@ -55,7 +55,6 @@ html {
         font-size: 3rem;
       }
       .button {
-        background: tomato;
         width: 120px;
         padding: 10px;
         cursor: pointer;
@@ -64,6 +63,13 @@ html {
         user-select: none;
         opacity: 0.8;
         transition: .6s;
+      }
+      .button.start {
+        background-color: tomato;
+      }
+      .button.next {
+        background-color: darkgreen;
+        color: #fff;
       }
       .button:hover {
         opacity: 1;
