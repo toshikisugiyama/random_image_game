@@ -1,7 +1,7 @@
 import React from 'react'
 const Character = props => {
-  const counter = props.counter
   const count = props.count
+  const number = props.number
   const min = 0
   const max = props.images.number
   const path = props.images.path
@@ -12,11 +12,9 @@ const Character = props => {
     return Math.floor(Math.random() * (max - min)) + min
   }
   const showImage = () => {
-    if(counter>0 && count>0){
-      return path + getRandomInt(min, max) + extension
-    }
+    return path + getRandomInt(min, max) + extension
   }
-  if(counter>0 && count>0){
+  if(count>0 && count<=number){
     return(
       <img
         src={showImage()}
