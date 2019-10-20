@@ -71,6 +71,11 @@ html {
         background-color: darkgreen;
         color: #fff;
       }
+      .button.restart {
+        background-color: indigo;
+        color: #fff;
+        font-size: 1.5rem;
+      }
       .button:hover {
         opacity: 1;
         transition: .6s;

@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
-import SwitchQuestionCharacter from './main/SwitchQuestionCharacter'
-import Finished from './main/Finished'
+import SwitchButton from './main/SwitchButton'
 import Counter from './main/Counter'
 import Button from './main/Button'
 import Reset from './main/Reset'
@@ -8,6 +7,11 @@ const Main = () => {
   const [btnState, setBtnState] = useState(0)
   const clickCount = btnState
   const number = 20
+  const images = {
+    number: 9,
+    path: './img/',
+    extension: '.png',
+  }
   const counter = number - clickCount + 1
   const handleClick = () => {
     setBtnState(clickCount + 1)
@@ -15,10 +19,10 @@ const Main = () => {
   return(
     <main>
       <div id="img_box" className="img-box">
-        <SwitchQuestionCharacter count={clickCount}/>
-        <Finished
-          counter={counter}
+        <SwitchButton
           count={clickCount}
+          counter={counter}
+          images={images}
         />
       </div>
       <Counter
@@ -26,6 +30,7 @@ const Main = () => {
         count={clickCount}
       />
       <Button
+        counter={counter}
         count={clickCount}
         onClick={handleClick}
       />
