@@ -4,7 +4,11 @@ const Reset = props => {
   const number = props.number
   if(count>0 && count<=number){
     return(
-      <button type="button" id="reset" className="button reset"></button>
+      <button
+        type="button"
+        className="button reset"
+        onClick={props.onClick}
+      ></button>
     )
   }
   return <div></div>

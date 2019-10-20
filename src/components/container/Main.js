@@ -24,12 +24,19 @@ const Main = () => {
         id: 'restart',
       })
     }
-    if(count === 0 && count < number){
+    if(count < number){
       setBtnState({
         value: 'つぎへ',
         id: 'next',
       })
     }
+  }
+  const handleReset = () => {
+    setCount(0)
+    setBtnState({
+      value: 'スタート',
+      id: 'start',
+    })
   }
   return(
     <main>
@@ -46,11 +53,13 @@ const Main = () => {
       />
       <Button
         btnState={btnState}
-        onClick={handleClick}
+        count={count}
+        onClick={(count>number)?handleReset:handleClick}
       />
       <Reset
         count={count}
         number={number}
+        onClick={handleReset}
       />
     </main>
   )
