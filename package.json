@@ -1,6 +1,6 @@
 {
-  "name": "toshikisugiyama.github.io",
-  "version": "0.1.0",
+  "name": "random_image_game",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "html5-reset": "^2.1.3",
