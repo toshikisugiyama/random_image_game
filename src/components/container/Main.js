@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
-import SwitchQuestionCharacter from './SwitchQuestionCharacter'
-import Finished from './Finished'
-import Counter from './Counter'
-import Button from './Button'
-import Reset from './Reset'
+import SwitchQuestionCharacter from './main/SwitchQuestionCharacter'
+import Finished from './main/Finished'
+import Counter from './main/Counter'
+import Button from './main/Button'
+import Reset from './main/Reset'
 const Main = () => {
   const [btnState, setBtnState] = useState(0)
   const clickCount = btnState

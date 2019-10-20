@@ -14,7 +14,7 @@ npm i -S html5-reset
 ```
 touch src/style.scss
 ```
-3. scss reset.css を読み込む。
+3. style.scss で reset.css を読み込む。
 ```scss:style.scss
 @import "~html5-reset";
 ```
