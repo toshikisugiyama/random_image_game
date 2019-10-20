@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import SwitchButton from './main/SwitchButton'
+import SwitchDisplay from './main/SwitchDisplay'
 import Counter from './main/Counter'
 import Button from './main/Button'
 import Reset from './main/Reset'
@@ -19,11 +19,12 @@ const Main = () => {
   return(
     <main>
       <div id="img_box" className="img-box">
-        <SwitchButton
+        <SwitchDisplay
           count={clickCount}
           counter={counter}
           images={images}
         />
+      <Reset count={clickCount}/>
       </div>
       <Counter
         counter={counter}
@@ -34,7 +35,6 @@ const Main = () => {
         count={clickCount}
         onClick={handleClick}
       />
-      <Reset count={clickCount}/>
     </main>
   )
 }

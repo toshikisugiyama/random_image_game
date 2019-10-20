@@ -2,7 +2,7 @@ import React from 'react'
 import Question from './switch/Question'
 import Character from './switch/Character'
 import Finished from './switch/Finished'
-const SwitchButton = props => {
+const SwitchDisplay = props => {
   if(props.count === 0 && props.counter > 0){
     return <Question />
   }
@@ -17,4 +17,4 @@ const SwitchButton = props => {
     />
   )
 }
-export default SwitchButton
+export default SwitchDisplay
