@@ -4,8 +4,11 @@ import Counter from './main/Counter'
 import Button from './main/Button'
 import Reset from './main/Reset'
 const Main = () => {
-  const [btnState, setBtnState] = useState(0)
-  const clickCount = btnState
+  const [clickCount, setClickCount] = useState(0)
+  const [btnState, setBtnState] = useState({
+    value: 'スタート',
+    id: 'start',
+  })
   const number = 20
   const images = {
     number: 9,
@@ -14,7 +17,18 @@ const Main = () => {
   }
   const counter = number - clickCount + 1
   const handleClick = () => {
-    setBtnState(clickCount + 1)
+    setClickCount(clickCount + 1)
+    if((counter - 1)===0){
+      setBtnState({
+        value: 'もういっかい',
+        id: 'restart',
+      })
+    } else if((counter - 2)<=number){
+      setBtnState({
+        value: 'つぎへ',
+        id: 'next',
+      })
+    }
   }
   return(
     <main>
@@ -24,17 +38,16 @@ const Main = () => {
           counter={counter}
           images={images}
         />
-      <Reset count={clickCount}/>
       </div>
       <Counter
         counter={counter}
         count={clickCount}
       />
       <Button
-        counter={counter}
-        count={clickCount}
+        btnState={btnState}
         onClick={handleClick}
       />
+      <Reset count={clickCount}/>
     </main>
   )
 }
