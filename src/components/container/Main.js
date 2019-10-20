@@ -7,6 +7,8 @@ import Reset from './main/Reset'
 const Main = () => {
   const [btnState, setBtnState] = useState(0)
   const clickCount = btnState
+  const number = 20
+  const counter = number - clickCount + 1
   const handleClick = () => {
     setBtnState(clickCount + 1)
   }
@@ -14,9 +16,15 @@ const Main = () => {
     <main>
       <div id="img_box" className="img-box">
         <SwitchQuestionCharacter count={clickCount}/>
-        <Finished  count={clickCount}/>
+        <Finished
+          counter={counter}
+          count={clickCount}
+        />
       </div>
-      <Counter count={clickCount}/>
+      <Counter
+        counter={counter}
+        count={clickCount}
+      />
       <Button
         count={clickCount}
         onClick={handleClick}
