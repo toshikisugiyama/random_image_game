@@ -4,36 +4,62 @@ import Counter from './main/Counter'
 import Button from './main/Button'
 import Reset from './main/Reset'
 const Main = () => {
-  const [btnState, setBtnState] = useState(0)
-  const clickCount = btnState
+  const [count, setCount] = useState(0)
+  const [btnState, setBtnState] = useState({
+    value: 'スタート',
+    id: 'start',
+  })
   const number = 20
   const images = {
     number: 9,
     path: './img/',
     extension: '.png',
   }
-  const counter = number - clickCount + 1
+  const counter = number - count + 1
   const handleClick = () => {
-    setBtnState(clickCount + 1)
+    setCount(count + 1)
+    if(count === number){
+      setBtnState({
+        value: 'もういっかい',
+        id: 'restart',
+      })
+    }
+    if(count < number){
+      setBtnState({
+        value: 'つぎへ',
+        id: 'next',
+      })
+    }
+  }
+  const handleReset = () => {
+    setCount(0)
+    setBtnState({
+      value: 'スタート',
+      id: 'start',
+    })
   }
   return(
     <main>
       <div id="img_box" className="img-box">
         <SwitchDisplay
-          count={clickCount}
-          counter={counter}
+          count={count}
+          number={number}
           images={images}
         />
-      <Reset count={clickCount}/>
       </div>
       <Counter
         counter={counter}
-        count={clickCount}
+        count={count}
       />
       <Button
-        counter={counter}
-        count={clickCount}
-        onClick={handleClick}
+        btnState={btnState}
+        count={count}
+        onClick={(count>number)?handleReset:handleClick}
+      />
+      <Reset
+        count={count}
+        number={number}
+        onClick={handleReset}
       />
     </main>
   )
