@@ -1,0 +1,119 @@
+@import '~html5-reset';
+html {
+  font-size: 62.5%;
+  *,*::before,*::after {
+    box-sizing: border-box;
+  }
+  body {
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    color: #dbe7ed;
+    overflow: hidden;
+    span{
+      display: block;
+      text-align: center;
+    }
+    .hidden {
+      display: none;
+    }
+    .container {
+      text-align: center;
+      height: 100%;
+    }
+    main {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: calc(100vh - 30px);
+      .img-box {
+        height: 60%;
+        width: 90%;
+        margin: 0 auto 60px;
+        user-select: none;
+        .question {
+          font-size: 40rem;
+          height: 100%;
+          line-height: 100%;
+        }
+        img {
+          object-fit: contain;
+          transition: 2s;
+        }
+        .finished {
+          font-size: 3rem;
+        }
+      }
+      .counter {
+        position: absolute;
+        top: 5px;
+        left: 0;
+        right: 0;
+        font-weight: bold;
+        font-size: 3rem;
+      }
+      .button {
+        width: 120px;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 1.8rem;
+        user-select: none;
+        opacity: 0.8;
+        transition: .6s;
+      }
+      .button.start {
+        background-color: tomato;
+      }
+      .button.next {
+        background-color: darkgreen;
+        color: #fff;
+      }
+      .button.restart {
+        background-color: indigo;
+        color: #fff;
+        font-size: 1.5rem;
+      }
+      .button:hover {
+        opacity: 1;
+        transition: .6s;
+      }
+      .button.reset {
+        position: absolute;
+        left: 16px;
+        bottom: 16px;
+        background: transparent;
+        color: #fff;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+      }
+      .button.reset:after {
+        position: absolute;
+        left: 4px;
+        bottom: 4px;
+        content: '';
+        background: #dbe7ed;
+        width: 50px;
+        height: 50px;
+        border: none;
+        border-radius: 50%;
+      }
+    }
+    footer {
+      position: relative;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 30px;
+      .copyright {
+        position: relative;
+        bottom: 3px;
+        right: 0;
+        left: 0;
+      }
+    }
+  }
+}
