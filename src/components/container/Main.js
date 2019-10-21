@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import Modal from './main/Modal'
 import SwitchDisplay from './main/SwitchDisplay'
 import Counter from './main/Counter'
 import Button from './main/Button'
@@ -40,6 +41,7 @@ const Main = () => {
   }
   return(
     <main>
+      <Modal />
       <div id="img_box" className="img-box">
         <SwitchDisplay
           count={count}

@@ -28,6 +28,56 @@ html {
       align-items: center;
       justify-content: center;
       height: calc(100vh - 30px);
+      .modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 60px 50px;
+        background-color: #ffffcc;
+        color: #333;
+        width: 90%;
+        height: 90%;
+        z-index: 10;
+        overflow: auto;
+        h2 {
+          text-align: center;
+          font-size: 3.0rem;
+          margin-bottom: 60px;
+        }
+        p {
+          font-size: 1.8rem;
+          margin-bottom: 30px;
+        }
+        ol {
+          display: block;
+          width: 100%;
+          list-style-position: inside;
+          margin-bottom: 50px;
+          font-size: 2.3rem;
+          li {
+            margin-bottom: 20px;
+          }
+        }
+        .button {
+          display: block;
+          width: 100%;
+          button {
+            margin: 0 auto;
+            display: block;
+            width: 120px;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1.8rem;
+            user-select: none;
+            opacity: 0.8;
+            transition: .6s;
+            background-color: #333;
+            color: #fff;
+          }
+        }
+      }
       .img-box {
         height: 60%;
         width: 90%;
