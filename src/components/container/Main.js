@@ -5,22 +5,29 @@ import Counter from './main/Counter'
 import Button from './main/Button'
 import Reset from './main/Reset'
 const Main = () => {
-  const [count, setCount] = useState(0)
-  const [modal, setModal] = useState({
-    state: false,
-    clicked: false,
-  })
-  const [btnState, setBtnState] = useState({
-    value: '説明',
-    id: 'explanation',
-  })
+  // 表示回数
   const number = 20
+  // 画像数とパス
   const images = {
     number: 9,
     path: './img/',
     extension: '.png',
   }
+  // カウント
+  const [count, setCount] = useState(0)
+  // 説明用モーダル
+  const [modal, setModal] = useState({
+    state: false,
+    clicked: false,
+  })
+  // ボタン
+  const [btnState, setBtnState] = useState({
+    value: '説明',
+    id: 'explanation',
+  })
+  // カウンター
   const counter = number - count + 1
+  // クリック時の挙動
   const handleClick = () => {
     setCount(count + 1)
     if(modal.clicked===false){
@@ -43,13 +50,19 @@ const Main = () => {
       })
     }
   }
+  // リセット
   const handleReset = () => {
     setCount(0)
     setBtnState({
-      value: 'スタート',
-      id: 'start',
+      value: '説明',
+      id: 'explanation',
+    })
+    setModal({
+      state: false,
+      clicked: false,
     })
   }
+  // モーダル
   const handleModal = () => {
     setModal({
       state: false,

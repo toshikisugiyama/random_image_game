@@ -1,4 +1,10 @@
 @import '~html5-reset';
+$sp: 480px;
+@mixin sp {
+  @media (max-width: ($sp)) {
+    @content;
+  }
+}
 html {
   font-size: 62.5%;
   *,*::before,*::after {
@@ -40,14 +46,25 @@ html {
         height: 90%;
         z-index: 10;
         overflow: auto;
+        @include sp {
+          padding: 30px 20px;
+        }
         h2 {
           text-align: center;
           font-size: 3.0rem;
           margin-bottom: 60px;
+          @include sp {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+          }
         }
         p {
           font-size: 1.8rem;
           margin-bottom: 30px;
+          @include sp {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+          }
         }
         ol {
           display: block;
@@ -55,6 +72,9 @@ html {
           list-style-position: inside;
           margin-bottom: 50px;
           font-size: 2.3rem;
+          @include sp {
+            font-size: 1.6rem;
+          }
           li {
             margin-bottom: 20px;
           }
@@ -83,6 +103,9 @@ html {
         width: 90%;
         margin: 0 auto 60px;
         user-select: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         .question {
           font-size: 40rem;
           height: 100%;
@@ -91,6 +114,7 @@ html {
         img {
           object-fit: contain;
           transition: 2s;
+          user-select: none;
         }
         .finished {
           font-size: 3rem;
@@ -113,6 +137,9 @@ html {
         user-select: none;
         opacity: 0.8;
         transition: .6s;
+      }
+      .button.explanation {
+        background-color: yellow;
       }
       .button.start {
         background-color: tomato;
