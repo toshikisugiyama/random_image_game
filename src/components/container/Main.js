@@ -6,9 +6,13 @@ import Button from './main/Button'
 import Reset from './main/Reset'
 const Main = () => {
   const [count, setCount] = useState(0)
+  const [modal, setModal] = useState({
+    state: false,
+    clicked: false,
+  })
   const [btnState, setBtnState] = useState({
-    value: 'スタート',
-    id: 'start',
+    value: '説明',
+    id: 'explanation',
   })
   const number = 20
   const images = {
@@ -19,6 +23,13 @@ const Main = () => {
   const counter = number - count + 1
   const handleClick = () => {
     setCount(count + 1)
+    if(modal.clicked===false){
+      setCount(0)
+      setModal({
+        state: true,
+        clicked: true,
+      })
+    }
     if(count === number){
       setBtnState({
         value: 'もういっかい',
@@ -39,9 +50,22 @@ const Main = () => {
       id: 'start',
     })
   }
+  const handleModal = () => {
+    setModal({
+      state: false,
+      clicked: true,
+    })
+    setBtnState({
+      value: 'スタート',
+      id: 'start',
+    })
+  }
   return(
     <main>
-      <Modal />
+      <Modal
+        modal={modal}
+        onClick={handleModal}
+      />
       <div id="img_box" className="img-box">
         <SwitchDisplay
           count={count}
