@@ -9,7 +9,7 @@ const Main = () => {
   const number = 20
   // 画像数とパス
   const images = {
-    number: 9,
+    number: 10,
     path: './img/',
     extension: '.png',
   }
