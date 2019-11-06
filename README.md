@@ -1,3 +1,19 @@
+# 名前をつけて早く呼ぶゲーム
+
+React を使用
+
+### 環境
+
+- node v10.15.3
+- npm 6.11.3
+- react 16.10.2
+
+---
+
+![screen](https://github.com/toshikisugiyama/random_image_game/blob/version3.1/screen.jpg "screen")
+
+---
+
 ### Create React App を使う
 ```
 npx create-react-app my-app
