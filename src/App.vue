@@ -17,6 +17,7 @@
         :max-num="maxNum"
         v-if="screenStatus==='started'"
       />
+      <div class="finish" v-else-if="screenStatus==='finished'">おしまい</div>
       <div class="question-mark" v-else>?</div>
       <SwitchButtons
         :button-value="buttonValue"
@@ -60,28 +61,29 @@ export default {
           this.explainModal = true
           break;
         case 'explain':
+        case 'finished':
           this.buttonValue = 'はじめる'
-          this.screenStatus = 'start'
+          this.screenStatus = 'explained'
           this.explainModal = false
+          this.clickCount = 20
           break;
-          case 'start':
-            this.buttonValue = 'つぎへ'
-            this.screenStatus = 'started'
-            break;
-          case 'started':
-            this.clickCount -= 1
-            this.randomNumber = this.getRandomNum(0, images)
-            if (this.clickCount <= 0) {
-              this.clickCount = 0
-              this.screenStatus = 'start'
-              this.buttonValue = 'もういっかい'
-            }
-            break;
+        case 'explained':
+          this.buttonValue = 'つぎへ'
+          this.screenStatus = 'started'
+          break;
+        case 'started':
+          this.clickCount -= 1
+          this.randomNumber = this.getRandomNum(0, images)
+          if (this.clickCount <= 0) {
+            this.screenStatus = 'finished'
+            this.buttonValue = 'もういっかい'
+          }
+          break;
         default:
           this.buttonValue = 'せつめい'
           this.screenStatus = 'top'
           this.explainModal = false
-          this.lickCount = 20
+          this.clickCount = 20
           break;
       }
     },
@@ -106,11 +108,17 @@ export default {
     }
     main {
       height: 400px;
-      .question-mark {
+      .question-mark, .finish {
         height: 300px;
+        line-height: 300px;
         margin: 25px auto;
-        font-size: 15rem;
         text-align: center;
+      }
+      .question-mark {
+        font-size: 15rem;
+      }
+      .finish {
+        font-size: 2rem;
       }
     }
   }
