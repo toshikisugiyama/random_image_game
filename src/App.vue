@@ -5,16 +5,25 @@
       :button-value="buttonValue"
       @handle-click="handleClick"
     />
-    <Count
-      :click-count="clickCount"
-      v-if="screenStatus==='started'"
-    />
-    <Character />
-    <SwitchButtons
-      :button-value="buttonValue"
-      @handle-click="handleClick"
-      v-if="screenStatus != 'explain'"
-    />
+    <header>
+      <Count
+        :click-count="clickCount"
+        v-if="screenStatus==='started'"
+      />
+    </header>
+    <main>
+      <Character
+        :random-number="randomNumber"
+        :max-num="maxNum"
+        v-if="screenStatus==='started'"
+      />
+      <div v-else>?</div>
+      <SwitchButtons
+        :button-value="buttonValue"
+        @handle-click="handleClick"
+        v-if="screenStatus != 'explain'"
+      />
+    </main>
   </div>
 </template>
 
@@ -23,6 +32,8 @@ import ExplanationModal from './components/ExplanationModal.vue'
 import Count from './components/Count.vue'
 import Character from './components/Character.vue'
 import SwitchButtons from './components/SwitchButtons.vue'
+import 'normalize.css'
+const images = 10
 export default {
   data(){
     return{
@@ -30,6 +41,8 @@ export default {
       screenStatus: 'top',
       explainModal: false,
       clickCount: 20,
+      maxNum: images,
+      randomNumber: this.getRandomNum(0, images),
     }
   },
   components: {
@@ -57,7 +70,9 @@ export default {
             break;
           case 'started':
             this.clickCount -= 1
-            if (this.clickCount === 0) {
+            this.randomNumber = this.getRandomNum(0, images)
+            if (this.clickCount <= 0) {
+              this.clickCount = 0
               this.screenStatus = 'start'
               this.buttonValue = 'もういっかい'
             }
@@ -70,6 +85,15 @@ export default {
           break;
       }
     },
+    getRandomNum(min, max) {
+      min = Math.ceil(min)
+      max = Math.floor(max)
+      return Math.floor(Math.random() * (max - min)) + min
+    },
   },
 }
 </script>
+
+<style lang="scss" scoped>
+
+</style>

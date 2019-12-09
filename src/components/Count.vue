@@ -1,6 +1,8 @@
 <template>
-  <div>
-    あと{{ clickCount }}回
+  <div id="count">
+    <span class="sub">あと</span>
+    <span class="count">{{ clickCount }}</span>
+    <span class="sub">回</span>
   </div>
 </template>
 
@@ -13,3 +15,14 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+#count{
+  .sub {
+    font-size: 1rem;
+  }
+  .count {
+    font-size: 1.2rem;
+  }
+}
+</style>
