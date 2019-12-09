@@ -1,28 +1,75 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <ExplanationModal
+      v-if="explainModal"
+      :button-value="buttonValue"
+      @handle-click="handleClick"
+    />
+    <Count
+      :click-count="clickCount"
+      v-if="screenStatus==='started'"
+    />
+    <Character />
+    <SwitchButtons
+      :button-value="buttonValue"
+      @handle-click="handleClick"
+      v-if="screenStatus != 'explain'"
+    />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import ExplanationModal from './components/ExplanationModal.vue'
+import Count from './components/Count.vue'
+import Character from './components/Character.vue'
+import SwitchButtons from './components/SwitchButtons.vue'
 export default {
-  name: 'app',
+  data(){
+    return{
+      buttonValue: 'せつめい',
+      screenStatus: 'top',
+      explainModal: false,
+      clickCount: 20,
+    }
+  },
   components: {
-    HelloWorld
-  }
+    ExplanationModal,
+    Count,
+    Character,
+    SwitchButtons,
+  },
+  methods: {
+    handleClick(){
+      switch (this.screenStatus) {
+        case 'top':
+          this.buttonValue = 'とじる'
+          this.screenStatus = 'explain'
+          this.explainModal = true
+          break;
+        case 'explain':
+          this.buttonValue = 'はじめる'
+          this.screenStatus = 'start'
+          this.explainModal = false
+          break;
+          case 'start':
+            this.buttonValue = 'つぎへ'
+            this.screenStatus = 'started'
+            break;
+          case 'started':
+            this.clickCount -= 1
+            if (this.clickCount === 0) {
+              this.screenStatus = 'start'
+              this.buttonValue = 'もういっかい'
+            }
+            break;
+        default:
+          this.buttonValue = 'せつめい'
+          this.screenStatus = 'top'
+          this.explainModal = false
+          this.lickCount = 20
+          break;
+      }
+    },
+  },
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
