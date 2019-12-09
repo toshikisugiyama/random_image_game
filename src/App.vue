@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <ExplanationModal
       v-if="explainModal"
       :button-value="buttonValue"
@@ -17,7 +17,7 @@
         :max-num="maxNum"
         v-if="screenStatus==='started'"
       />
-      <div v-else>?</div>
+      <div class="question-mark" v-else>?</div>
       <SwitchButtons
         :button-value="buttonValue"
         @handle-click="handleClick"
@@ -95,5 +95,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+  .container {
+    font-size: 62.5%;
+    padding: 10px;
+    * {
+      box-sizing: border-box;
+    }
+    header {
+      height: 100px;
+    }
+    main {
+      height: 400px;
+      .question-mark {
+        height: 300px;
+        margin: 25px auto;
+        font-size: 15rem;
+        text-align: center;
+      }
+    }
+  }
 </style>

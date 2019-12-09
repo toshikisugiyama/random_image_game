@@ -9,8 +9,8 @@
           :src="`./img/${image-1}.png`"
           :alt="`character${image-1}`"
           v-show="image===(randomNumber+1)"
-          height="100px"
-          width="100px"
+          height="300px"
+          width="300px"
         >
       </li>
     </ul>
@@ -32,9 +32,9 @@ export default {
 
 <style lang="scss" scoped>
 ul{
-  width: 100px;
-  height: 100px;
-  margin: 0 auto;
+  width: 300px;
+  height: 300px;
+  margin: 25px auto;
   padding: 0;
   list-style: none;
   position: relative;
