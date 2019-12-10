@@ -72,9 +72,6 @@ export default {
     opacity: 0;
   }
   .modal {
-    h2 {
-      text-align: center;
-    }
     position: absolute;
     width: 90%;
     height: 80%;
@@ -84,19 +81,27 @@ export default {
     background-color: #fff;
     padding: 20px 10px;
     z-index: 10;
+    overflow: auto;
+    h2 {
+      text-align: center;
+    }
     .explanation {
-      height: 300px;
+      height: 250px;
       font-size: 0.8rem;
       line-height: 2;
       overflow-y: scroll;
       margin: 25px auto;
       padding: 0 5px;
       color: #333;
+      @media screen and (min-width: 768px) {
+        height: auto;
+        padding: 0 30px;
+      }
       p {
         margin-bottom: 60px;
         .strong {
-          font-size: 1.2rem;
           font-weight: bold;
+          font-size: 1.2rem;
           color: rgb(138, 6, 6);
         }
       }
@@ -107,6 +112,7 @@ export default {
           margin-bottom: 20px;
           .strong {
             font-size: 1rem;
+            color: rgb(138, 6, 6);
           }
         }
       }

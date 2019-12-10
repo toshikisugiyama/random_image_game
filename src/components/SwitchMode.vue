@@ -37,6 +37,7 @@ $height: 30px;
     align-items: center;
     justify-content: space-between;
     padding: 0 1px;
+    cursor: pointer;
     .mode {
       color: #fff;
       margin: 0 10px;

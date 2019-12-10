@@ -25,12 +25,22 @@ export default {
 <style lang="scss" scoped>
 .container {
   .switch_button {
-    padding: 15px 10px;
+    padding: 0 10px;
     background-color: #333;
     color: #fff;
     margin: 0 auto;
     border-radius: 5px;
     text-align: center;
+    height: 80px;
+    line-height: 80px;
+    font-size: 1.6rem;
+    opacity: 0.6;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.8s;
+  }
+  .switch_button:hover {
+    opacity: 1;
   }
   main {
     width: 100%;

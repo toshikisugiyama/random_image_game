@@ -19,6 +19,7 @@
       />
     </header>
     <main>
+      <h1 v-if="screenStatus==='top'">名前をつけて早く呼ぶゲーム</h1>
       <Character
         :random-number="randomNumber"
         :max-num="maxNum"
@@ -131,9 +132,20 @@ export default {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      max-width: 768px;
+      margin: 0 auto;
     }
     main {
       height: 400px;
+      max-width: 768px;
+      margin: 0 auto;
+      h1 {
+        position: absolute;
+        left: -50%;
+        transform: translate(50%,-100%);
+        width: 100%;
+        text-align: center;
+      }
       .question-mark, .finish {
         height: 300px;
         line-height: 300px;

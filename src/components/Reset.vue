@@ -29,7 +29,8 @@ $size: 22px;
     border-radius: 50%;
     border: 1px solid #333;
     margin: 0;
-    opacity: 0.8;
+    opacity: 0.6;
+    transition: opacity 0.8s;
     cursor: pointer;
     &-button {
       width: $size;
@@ -41,6 +42,9 @@ $size: 22px;
       left: 50%;
       transform: translate(-50%, -50%);
     }
+  }
+  .reset:hover {
+    opacity: 1;
   }
 }
 .container.dark {
