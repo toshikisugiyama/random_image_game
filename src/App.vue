@@ -33,6 +33,9 @@
         v-if="screenStatus != 'explain'"
       />
     </main>
+    <footer>
+      <p>&#169;Toshiki Sugiyama</p>
+    </footer>
   </div>
 </template>
 
@@ -120,12 +123,17 @@ export default {
 
 <style lang="scss" scoped>
   .container {
-    font-size: 62.5%;
-    padding: 0 10px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     height: 100vh;
+    font-size: 62.5%;
     transition: background-color 1s;
     * {
       box-sizing: border-box;
+      user-select: none;
     }
     header {
       height: 100px;
@@ -134,11 +142,13 @@ export default {
       justify-content: space-between;
       max-width: 768px;
       margin: 0 auto;
+      padding: 0 10px;
     }
     main {
       height: 400px;
       max-width: 768px;
       margin: 0 auto;
+      padding: 0 10px;
       h1 {
         position: absolute;
         left: -50%;
@@ -149,7 +159,7 @@ export default {
       .question-mark, .finish {
         height: 300px;
         line-height: 300px;
-        margin: 25px auto;
+        margin: 0 auto 25px;
         text-align: center;
       }
       .question-mark {
@@ -157,6 +167,14 @@ export default {
       }
       .finish {
         font-size: 2rem;
+      }
+    }
+    footer {
+      max-width: 768px;
+      margin: 0 auto;
+      p {
+        text-align: center;
+        margin: 0;
       }
     }
   }

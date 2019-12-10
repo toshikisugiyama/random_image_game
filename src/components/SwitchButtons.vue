@@ -31,8 +31,8 @@ export default {
     margin: 0 auto;
     border-radius: 5px;
     text-align: center;
-    height: 80px;
-    line-height: 80px;
+    height: 50px;
+    line-height: 50px;
     font-size: 1.6rem;
     opacity: 0.6;
     font-weight: bold;
