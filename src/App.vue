@@ -1,19 +1,22 @@
 <template>
-  <div class="container">
+  <div class="container" :class="{dark: isDark}">
     <ExplanationModal
       :explain-modal="explainModal"
       :button-value="buttonValue"
       @handle-click="handleClick"
     />
     <header>
-      <Reset
-        @reset-all="resetAll"
+      <SwitchMode
+        :is-dark="isDark"
+        @change-mode="changeMode"
       />
       <Count
         :click-count="clickCount"
         v-if="screenStatus==='started'"
       />
-      <SwitchMode />
+      <Reset
+        @reset-all="resetAll"
+      />
     </header>
     <main>
       <Character
@@ -58,6 +61,7 @@ export default {
       clickCount: 20,
       maxNum: images,
       randomNumber: this.getRandomNum(0, images),
+      isDark: false,
     }
   },
   methods: {
@@ -106,6 +110,9 @@ export default {
       this.explainModal = false
       this.clickCount = 20
     },
+    changeMode(){
+      this.isDark = !this.isDark
+    }
   },
 }
 </script>
@@ -113,12 +120,17 @@ export default {
 <style lang="scss" scoped>
   .container {
     font-size: 62.5%;
-    padding: 10px;
+    padding: 0 10px;
+    height: 100vh;
+    transition: background-color 1s;
     * {
       box-sizing: border-box;
     }
     header {
       height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
     main {
       height: 400px;
@@ -134,6 +146,12 @@ export default {
       .finish {
         font-size: 2rem;
       }
+    }
+  }
+  .container.dark {
+    background-color: #000;
+    * {
+      color: #fff;
     }
   }
 </style>

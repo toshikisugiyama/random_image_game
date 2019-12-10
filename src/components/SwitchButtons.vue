@@ -1,6 +1,6 @@
 <template>
   <div
-    id="switch_buttons"
+    class="switch_button"
     @click="changeStatus"
   >
     {{ buttonValue }}
@@ -24,7 +24,7 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  #switch_buttons {
+  .switch_button {
     padding: 15px 10px;
     background-color: #333;
     color: #fff;
@@ -34,6 +34,12 @@ export default {
   }
   main {
     width: 100%;
+  }
+}
+.container.dark {
+  .switch_button {
+    background-color: #fff;
+    color: #333;
   }
 }
 </style>

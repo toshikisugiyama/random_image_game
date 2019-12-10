@@ -6,14 +6,14 @@
     ></div>
     <transition name="modal">
       <div class="modal" v-if="explainModal">
-        <h2>せつめい</h2>
+        <h2>あそびかた</h2>
         <div class="explanation">
-          <p>これは、現れるキャラクターに、その人のセンスで特徴を捉えた名前を付け、全員で共有し、以降もし同じものが現れたらその名前をいち早く叫んで、いち早く名前を叫んだキャラクターの数を競うゲームです。おかしな名前を付けたり、最初のうちに「簡単」と侮っていたら途中でまったく思い出せなくなったりと、笑いが絶えずに盛り上がります。</p>
+          <p>これは、現れる<span class="strong">キャラクター</span>に、その人のセンスで特徴を捉えた<span class="strong">名前</span>を付け、全員で<span class="strong">共有</span>し、以降もし同じものが現れたらその<span class="strong">名前</span>をいち早く<span class="strong">叫んで</span>、いち早く<span class="strong">名前</span>を叫んだ<span class="strong">キャラクター</span>の数を競う<span class="strong">ゲーム</span>です。おかしな<span class="strong">名前</span>を付けたり、最初のうちに「簡単」と侮っていたら途中でまったく思い出せなくなったりと、<span class="strong">笑い</span>が絶えずに盛り上がります。</p>
           <ol type="1">
-            <li>1人ずつ代わりばんこに、ボタンを押します。</li>
-            <li>現れたのが初めて見るキャラクターだったら、自由な発想で、ふさわしいと思う名前を付けます。</li>
-            <li>付けられた名前は、あとで同じ絵のキャラクターが出てきたらすばやく言えるように、しっかり覚えておきましょう。そして、またボタンを押して…とくり返していきます。</li>
-            <li>すでに名前が付けられたキャラクターが現れたら、誰でもいいので、すばやく正しい名前を言います。一番多く名前を言い当てた人が勝ちです。</li>
+            <li><span class="strong">1人ずつ</span>代わりばんこに、<span class="strong">ボタン</span>を押します。</li>
+            <li>現れたのが<span class="strong">初めて</span>見る<span class="strong">キャラクター</span>だったら、自由な発想で、ふさわしいと思う<span class="strong">名前</span>を付けます。</li>
+            <li>付けられた<span class="strong">名前</span>は、あとで同じ絵のキャラクターが出てきたらすばやく言えるように、しっかり<span class="strong">覚えて</span>おきましょう。そして、また<span class="strong">ボタン</span>を押して…とくり返していきます。</li>
+            <li>すでに<span class="strong">名前</span>が付けられた<span class="strong">キャラクター</span>が現れたら、<span class="strong">誰でも</span>いいので、<span class="strong">すばやく正しい名前</span>を言います。一番多く<span class="strong">名前</span>を言い当てた人が<span class="strong">勝ち</span>です。</li>
           </ol>
         </div>
         <SwitchButtons
@@ -72,6 +72,9 @@ export default {
     opacity: 0;
   }
   .modal {
+    h2 {
+      text-align: center;
+    }
     position: absolute;
     width: 90%;
     height: 80%;
@@ -83,10 +86,44 @@ export default {
     z-index: 10;
     .explanation {
       height: 300px;
-      font-size: 1.2rem;
-      overflow: auto;
+      font-size: 0.8rem;
+      line-height: 2;
+      overflow-y: scroll;
       margin: 25px auto;
       padding: 0 5px;
+      color: #333;
+      p {
+        margin-bottom: 60px;
+        .strong {
+          font-size: 1.2rem;
+          font-weight: bold;
+          color: rgb(138, 6, 6);
+        }
+      }
+      ol {
+        li {
+          font-size: 1rem;
+          font-weight: bold;
+          margin-bottom: 20px;
+          .strong {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+.container.dark {
+  .modal-layer {
+    background-color: rgba(255, 255, 255, 0.6)
+  }
+  .modal {
+    background-color: #333;
+    .explanation {
+      color: #fff;
+      .strong {
+        color: #badd1f;
+      }
     }
   }
 }
