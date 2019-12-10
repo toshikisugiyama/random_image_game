@@ -5,7 +5,7 @@
   >
     <div class="switch-mode-frame">
       <div class="switch-mode-button"></div>
-      <span class="mode">{{ isDark?'Dark':'Light' }}</span>
+      <span class="mode">{{ isDark?'Light':'Dark' }}</span>
     </div>
   </div>
 </template>
