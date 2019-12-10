@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div class="modal-layer" v-if="explainModal"></div>
+    <div
+      class="modal-layer"
+      v-if="explainModal"
+    ></div>
     <transition name="modal">
       <div class="modal" v-if="explainModal">
         <h2>せつめい</h2>
@@ -54,6 +57,7 @@ export default {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
+    z-index: 10;
   }
   .modal-enter {
     opacity: 0;
@@ -76,6 +80,7 @@ export default {
     transform: translate(-50%, -50%);
     background-color: #fff;
     padding: 20px 10px;
+    z-index: 10;
     .explanation {
       height: 300px;
       font-size: 1.2rem;

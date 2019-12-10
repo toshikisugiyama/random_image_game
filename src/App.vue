@@ -6,10 +6,14 @@
       @handle-click="handleClick"
     />
     <header>
+      <Reset
+        @reset-all="resetAll"
+      />
       <Count
         :click-count="clickCount"
         v-if="screenStatus==='started'"
       />
+      <SwitchMode />
     </header>
     <main>
       <Character
@@ -30,12 +34,22 @@
 
 <script>
 import ExplanationModal from './components/ExplanationModal.vue'
+import Reset from './components/Reset.vue'
 import Count from './components/Count.vue'
 import Character from './components/Character.vue'
 import SwitchButtons from './components/SwitchButtons.vue'
+import SwitchMode from './components/SwitchMode.vue'
 import 'normalize.css'
 const images = 10
 export default {
+  components: {
+    ExplanationModal,
+    Reset,
+    Count,
+    Character,
+    SwitchButtons,
+    SwitchMode,
+  },
   data(){
     return{
       buttonValue: 'せつめい',
@@ -45,12 +59,6 @@ export default {
       maxNum: images,
       randomNumber: this.getRandomNum(0, images),
     }
-  },
-  components: {
-    ExplanationModal,
-    Count,
-    Character,
-    SwitchButtons,
   },
   methods: {
     handleClick(){
@@ -91,6 +99,12 @@ export default {
       min = Math.ceil(min)
       max = Math.floor(max)
       return Math.floor(Math.random() * (max - min)) + min
+    },
+    resetAll() {
+      this.buttonValue = 'せつめい'
+      this.screenStatus = 'top'
+      this.explainModal = false
+      this.clickCount = 20
     },
   },
 }
