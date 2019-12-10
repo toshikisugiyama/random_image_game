@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <ExplanationModal
-      v-if="explainModal"
+      :explain-modal="explainModal"
       :button-value="buttonValue"
       @handle-click="handleClick"
     />

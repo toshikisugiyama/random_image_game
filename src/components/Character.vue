@@ -31,6 +31,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@keyframes showCharacter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 ul{
   width: 300px;
   height: 300px;
@@ -40,6 +48,10 @@ ul{
   position: relative;
   li{
     position: absolute;
+    img {
+      object-fit: contain;
+      animation: showCharacter .5s linear 0s;
+    }
   }
 }
 </style>
