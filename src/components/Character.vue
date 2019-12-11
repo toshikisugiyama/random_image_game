@@ -42,7 +42,7 @@ export default {
 ul{
   width: 300px;
   height: 300px;
-  margin: 25px auto;
+  margin: 0 auto 25px;
   padding: 0;
   list-style: none;
   position: relative;
