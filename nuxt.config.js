@@ -34,9 +34,13 @@ export default {
   */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module',
     '@nuxt/typescript-build'
   ],
+  typescript: {
+    typeCheck: {
+      eslint: true
+    }
+  },
   /*
   ** Nuxt.js modules
   */
@@ -49,7 +53,7 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    extend (config, ctx) {
-    }
+    // extend (config, ctx) {
+    // }
   }
 }
