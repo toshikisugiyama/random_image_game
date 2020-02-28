@@ -14,16 +14,17 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-$height: 100px;
+$height: 80px;
 $space: 15px;
 .header {
   width: 100%;
   height: $height;
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   display: flex;
   align-items: center;
   padding: 0 $space;
+  z-index: 2;
 }
 </style>

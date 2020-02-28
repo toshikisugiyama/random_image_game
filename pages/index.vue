@@ -25,12 +25,16 @@ $header-height: 100px;
   min-height: $height;
   height: 100vh;
   &__title {
+    font-size: 30px;
     position: absolute;
     top: $header-height;
     left: 0;
     right: 0;
     text-align: center;
     z-index: 0;
+    @media screen and (max-width: 600px) {
+      font-size: 20px;
+    }
   }
 }
 </style>
