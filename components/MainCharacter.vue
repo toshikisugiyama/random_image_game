@@ -1,25 +1,19 @@
 <template lang="pug">
   client-only
     .character
-      img(v-for="(image, index) in images" v-show="image===randomImg" :key="image" :src="image" :alt="'character' + index" width="300" height="300")
+      img(v-for="character in characters" v-show="character.image===randomImg" :key="character.id" :src="character.image" :alt="'character' + character.id" width="300" height="300")
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-type Data = {
-  images: string[]
-}
+import { charactersStore } from '@/store'
 export default Vue.extend({
-  data (): Data {
-    return {
-      images: [
-        require('@/assets/images/0.png'), require('@/assets/images/1.png'), require('@/assets/images/2.png'), require('@/assets/images/3.png'), require('@/assets/images/4.png'), require('@/assets/images/5.png'), require('@/assets/images/6.png'), require('@/assets/images/7.png'), require('@/assets/images/8.png'), require('@/assets/images/9.png')
-      ]
-    }
-  },
   computed: {
+    characters () {
+      return charactersStore.characters
+    },
     randomImg (): string {
-      return this.images[this.getRandomNum(0, this.images.length - 1)]
+      return this.characters[this.getRandomNum(0, this.characters.length - 1)].image
     }
   },
   methods: {
