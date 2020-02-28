@@ -1,4 +1,4 @@
-import { Module, VuexModule } from 'vuex-module-decorators'
+import { Module, VuexModule, Mutation } from 'vuex-module-decorators'
 import { Character } from '~/models/Character'
 
 @Module({
@@ -7,6 +7,12 @@ import { Character } from '~/models/Character'
   namespaced: true
 })
 export default class Characters extends VuexModule {
+  currentNumber: number = 0
+  @Mutation
+  commitRandomNumber (num: number) {
+    this.currentNumber = num
+  }
+
   characters: Character[] = [
     {
       id: 1,

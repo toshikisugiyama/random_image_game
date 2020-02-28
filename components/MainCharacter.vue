@@ -1,7 +1,7 @@
 <template lang="pug">
   client-only
     .character
-      img(v-for="character in characters" v-show="character.image===randomImg" :key="character.id" :src="character.image" :alt="'character' + character.id" width="300" height="300")
+      img(v-for="character in characters" v-show="character.image===currentCharacter" :key="character.id" :src="character.image" :alt="'character' + character.id" width="300" height="300")
 </template>
 
 <script lang="ts">
@@ -12,8 +12,11 @@ export default Vue.extend({
     characters () {
       return charactersStore.characters
     },
-    randomImg (): string {
-      return this.characters[this.getRandomNum(0, this.characters.length - 1)].image
+    currentNumber (): number {
+      return charactersStore.currentNumber
+    },
+    currentCharacter (): string {
+      return this.characters[this.currentNumber].image
     }
   },
   methods: {
