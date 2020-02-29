@@ -2,7 +2,6 @@
   client-only
     .character
       img(v-for="character in characters" v-show="character.image===currentCharacter" :key="character.id" :src="character.image" :alt="'character' + character.id" width="300" height="300")
-      p {{ stockName }}
 </template>
 
 <script lang="ts">
@@ -18,9 +17,6 @@ export default Vue.extend({
     },
     currentCharacter (): string {
       return this.characters[this.currentNumber].image
-    },
-    stockName (): any {
-      return charactersStore.inputtedName
     }
   },
   methods: {
