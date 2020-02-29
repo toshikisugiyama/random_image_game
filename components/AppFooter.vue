@@ -8,7 +8,7 @@
     .footer__container.footer_aftergame(v-else-if="remainingCount<=0")
       .footer_aftergame__button.footer__button(@click="resetAll") もどる
     .footer__container.footer_game(v-else)
-      input.footer_game__input_name(v-model="inputtedName" autofocus)
+      input.footer_game__input_name(v-model="inputtedName" placeholder="名前を入力  " autofocus)
       .footer_game__button.footer__button(@click="moveOnNext") つぎへ
 </template>
 
@@ -145,9 +145,15 @@ $height: 100px;
       font-size: 18px;
       padding: 0 15px;
       width: 80%;
+      @media screen and (max-width: 600px) {
+        width: 80%;
+      }
     }
     &__button {
       width: 20%;
+      @media screen and (max-width: 600px) {
+        width: 30%;
+      }
     }
   }
   &_aftergame {
@@ -168,7 +174,7 @@ $height: 100px;
     align-items: center;
     transition: background-color 1s;
     @media screen and (max-width: 600px) {
-      font-size: 12px;
+      font-size: 15px;
     }
   }
   &__button:hover {
