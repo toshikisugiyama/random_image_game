@@ -1,5 +1,6 @@
 import { Module, VuexModule, Mutation } from 'vuex-module-decorators'
 import { Character } from '~/models/Character'
+import { InputtedName } from '~/models/Inputtedname'
 
 @Module({
   name: 'characters',
@@ -9,8 +10,20 @@ import { Character } from '~/models/Character'
 export default class Characters extends VuexModule {
   currentNumber: number = 0
   @Mutation
-  commitRandomNumber (num: number) {
+  commitRandomNumber (num: number): void {
     this.currentNumber = num
+  }
+
+  inputtedName: InputtedName[] = []
+  @Mutation
+  addName (inputtedName: InputtedName): void {
+    this.inputtedName.push(inputtedName)
+  }
+
+  counter: number = 0
+  @Mutation
+  incrementCounter (): void {
+    this.counter++
   }
 
   characters: Character[] = [

@@ -1,24 +1,58 @@
 <template lang="pug">
   footer.footer
-    input(autofocus).footer__input_name
-    button.footer__button.next(@click="commitRandomNumber") つぎへ
+    input.footer__input_name(v-model="inputtedName" autofocus)
+    button.footer__button.next(@click="moveOnNext") つぎへ
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { charactersStore } from '@/store'
+import { Character } from '~/models/Character'
+interface Data {
+  inputtedName: string
+}
 export default Vue.extend({
+  data (): Data {
+    return {
+      inputtedName: ''
+    }
+  },
   computed: {
     maxNumber () {
       return charactersStore.characters.length
+    },
+    counter (): number {
+      return charactersStore.counter
+    },
+    currentNumber (): number {
+      return charactersStore.currentNumber
+    },
+    currentCharacter (): Character | undefined {
+      return charactersStore.characters.find((character: Character) => character.id - 1 === this.currentNumber)
     }
   },
   methods: {
+    moveOnNext (): void {
+      this.addName()
+      this.commitRandomNumber()
+      this.incrementCounter()
+      this.inputtedName = ''
+    },
     commitRandomNumber (): void {
       const min: number = 0
       const max: number = this.maxNumber
       const randomNum = Math.floor(Math.random() * (max - min)) + min
       charactersStore.commitRandomNumber(randomNum)
+    },
+    addName (): void {
+      charactersStore.addName({
+        id: this.counter,
+        imageId: this.currentNumber,
+        name: this.inputtedName
+      })
+    },
+    incrementCounter (): void {
+      charactersStore.incrementCounter()
     }
   }
 })
