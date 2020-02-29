@@ -32,6 +32,11 @@ export default class Characters extends VuexModule {
     this.counter++
   }
 
+  @Mutation
+  resetCounter (): void {
+    this.counter = 0
+  }
+
   characters: Character[] = [
     {
       id: 1,

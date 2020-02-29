@@ -1,7 +1,13 @@
 <template lang="pug">
   footer.footer
-    input.footer__input_name(v-model="inputtedName" autofocus)
-    button.footer__button.next(@click="moveOnNext") つぎへ
+    .footer__container.footer_rule(v-if="$route.name==='rule'")
+      .footer_rule__button.footer__button(@click="goToFront") もどる
+    .footer__container.footer_beforegame(v-else-if="counter<=0")
+      .footer_beforegame__button.footer__button(@click="showRule") あそびかた
+      .footer_beforegame__button.footer__button(@click="startGame") スタート
+    .footer__container.footer_game(v-else)
+      input.footer_game__input_name(v-model="inputtedName" autofocus)
+      .footer_game__button.footer__button(@click="moveOnNext") つぎへ
 </template>
 
 <script lang="ts">
@@ -32,6 +38,18 @@ export default Vue.extend({
     }
   },
   methods: {
+    goToFront (): void {
+      this.$router.push('/')
+      charactersStore.resetCounter()
+    },
+    showRule (): void {
+      this.$router.push('/rule')
+    },
+    startGame (): void {
+      this.commitRandomNumber()
+      this.incrementCounter()
+      this.inputtedName = ''
+    },
     moveOnNext (): void {
       this.addName()
       this.commitRandomNumber()
@@ -70,25 +88,64 @@ $height: 100px;
   align-items: center;
   justify-content: center;
   z-index: 2;
-  &__input_name {
-    margin: 0 5px 0 0;
-    height: $height*2/3;
-    font-size: 18px;
-    padding: 0 15px;
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: 80%;
+    max-width: 1264px;
+    @media screen and (max-width: 600px) {
+      width: 100%;
+      padding: 0 10px;
+    }
   }
-  &__button.next {
-    background-color: #333;
-    color: #fff;
+  &_rule {
+    &__button {
+      width: 100%;
+    }
+  }
+  &_beforegame {
+    justify-content: space-between;
+    &__button {
+      width: 48%;
+    }
+  }
+  &_game {
+    &__input_name {
+      margin: 0 5px 0 0;
+      height: $height*2/3;
+      font-size: 18px;
+      padding: 0 15px;
+      width: 80%;
+    }
+    &__button {
+      width: 20%;
+    }
   }
   &__button {
     height: $height*2/3;
-    font-size: 16px;
+    color: #fff;
+    background-color: #000;
+    font-size: 20px;
     padding: 0 15px;
-    border: #000 1px solid;
+    border: none;
     border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 1s;
   }
   &__button:hover {
     cursor: pointer;
+    background-color: #333;
+  }
+}
+.container.dark {
+  .footer {
+    &__button {
+      border: #fff 1px solid;
+    }
   }
 }
 </style>
