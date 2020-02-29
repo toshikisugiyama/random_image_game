@@ -1,15 +1,28 @@
 <template lang="pug">
   main.main
-    h1.main__title 名前をつけて早く呼ぶゲーム
-    main-character
+    h1.main__title {{ mainTitle }}
+    .main__symbol(v-if="counter<=0") ?
+    main-character(v-else)
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import { charactersStore } from '@/store'
 import MainCharacter from '@/components/MainCharacter.vue'
 export default Vue.extend({
   components: {
     MainCharacter
+  },
+  computed: {
+    counter (): number {
+      return charactersStore.counter
+    },
+    mainTitle (): string {
+      if (this.counter <= 0) {
+        return '名前を早く呼ぶゲーム'
+      }
+      return '今' + this.counter + '回'
+    }
   }
 })
 </script>
@@ -35,6 +48,16 @@ $header-height: 100px;
     @media screen and (max-width: 600px) {
       font-size: 20px;
     }
+  }
+  &__symbol {
+    height: 300px;
+    width: 300px;
+    font-size: 300px;
+    line-height: 300px;
+    content: '?';
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 </style>
