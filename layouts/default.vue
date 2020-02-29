@@ -1,5 +1,5 @@
 <template lang="pug">
-  div.container
+  .container(:class="{dark: isDark}")
     app-header
     nuxt
     app-footer
@@ -9,10 +9,16 @@
 import Vue from 'vue'
 import AppHeader from '@/components/AppHeader.vue'
 import AppFooter from '@/components/AppFooter.vue'
+import { charactersStore } from '@/store'
 export default Vue.extend({
   components: {
     AppHeader,
     AppFooter
+  },
+  computed: {
+    isDark (): boolean {
+      return charactersStore.isDark
+    }
   }
 })
 </script>
