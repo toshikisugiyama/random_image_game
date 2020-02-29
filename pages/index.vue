@@ -1,7 +1,8 @@
 <template lang="pug">
   main.main
     h1.main__title {{ mainTitle }}
-    .main__symbol(v-if="counter<=0") ?
+    .main__symbol.main__content(v-if="counter<=0") ?
+    .main__finish.main__content(v-else-if="remainingCount<=0") おしまい
     main-character(v-else)
 </template>
 
@@ -17,11 +18,14 @@ export default Vue.extend({
     counter (): number {
       return charactersStore.counter
     },
+    remainingCount (): number {
+      return charactersStore.remainingCount
+    },
     mainTitle (): string {
       if (this.counter <= 0) {
         return '名前を早く呼ぶゲーム'
       }
-      return '今' + this.counter + '回'
+      return 'あと ' + this.remainingCount + ' 回'
     }
   }
 })
@@ -51,15 +55,25 @@ $header-height: 100px;
       font-size: 20px;
     }
   }
-  &__symbol {
+  &__content {
     height: 300px;
-    width: 300px;
-    font-size: 300px;
     line-height: 300px;
-    content: '?';
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  &__symbol {
+    font-size: 300px;
+    width: 300px;
+  }
+  &__finish {
+    font-size: 80px;
+    width: 80%;
+    @media screen and (max-width: 600px) {
+      font-size: 30px;
+      width: 100%;
+      padding: 0 10px;
+    }
   }
 }
 .container.dark {
