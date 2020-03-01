@@ -43,10 +43,19 @@ export default Vue.extend({
       return charactersStore.characters.find((character: Character) => character.id - 1 === this.currentNumber)
     },
     erratumStatus (): number {
+      if (this.namedCharacter) {
+        if (this.namedCharacter.name === this.inputtedName) {
+          return 1
+        }
+        return 2
+      }
       return 0
     },
     inputtedCharacterData (): InputtedCharacterData[] {
       return charactersStore.inputtedCharacterData
+    },
+    namedCharacter (): InputtedCharacterData | undefined {
+      return this.inputtedCharacterData.find(item => item.imageId === this.currentNumber)
     }
   },
   methods: {
@@ -72,7 +81,6 @@ export default Vue.extend({
       this.commitRandomNumber()
       this.incrementCounter()
       this.calculateCount()
-      this.judgeName()
       this.inputtedName = ''
     },
     commitRandomNumber (): void {
@@ -94,10 +102,6 @@ export default Vue.extend({
     },
     calculateCount (): void {
       charactersStore.calculateCount()
-    },
-    judgeName (): void {
-      // console.log('全', this.inputtedCharacterData)
-      // console.log('被り', this.inputtedCharacterData.filter(item => item.imageId === this.currentNumber))
     }
   }
 })

@@ -3,16 +3,20 @@
     h1.main__title {{ mainTitle }}
     .main__symbol.main__content(v-if="counter<=0") ?
     .main__finish.main__content(v-else-if="remainingCount<=0") おしまい
-    main-character(v-else)
+    .main__character(v-else)
+      main-character
+      //- main-judgment
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { charactersStore } from '@/store'
 import MainCharacter from '@/components/MainCharacter.vue'
+// import MainJudgment from '@/components/MainJudgment.vue'
 export default Vue.extend({
   components: {
     MainCharacter
+    // MainJudgment
   },
   computed: {
     counter (): number {
