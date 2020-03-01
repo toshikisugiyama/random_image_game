@@ -31,7 +31,7 @@ export default class Characters extends VuexModule {
     this.inputtedCharacterData = []
   }
 
-  defaultCount: number = 20
+  defaultCount: number = 10
 
   remainingCount: number = this.defaultCount
   @Mutation
