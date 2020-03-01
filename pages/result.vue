@@ -10,7 +10,7 @@
             th.result__table__name 名前
             th.result__table__correct 正解
             th.result__table__judge 判定
-          tr(v-for="data in inputtedCharacterData" :key="data.id")
+          tr(v-for="data in inputtedCharacterData" :key="data.id" :class="{correct: data.erratum===1, incorrect: data.erratum===2}")
             td.result__table__id {{ data.id }}
             td.result__table__name {{ data.name }}
             td.result__table__correct {{ data.erratum === 0 ? '' : showCorrectName(data.imageId) }}
@@ -34,7 +34,7 @@ export default Vue.extend({
     resultPoint (): number {
       if (this.judgedCharacterData.length) {
         const denominator: number = this.judgedCharacterData.filter(item => item.erratum === 1).length
-        return denominator / this.judgedCharacterData.length * 100
+        return Math.round(denominator / this.judgedCharacterData.length * 100)
       }
       return 0
     }
@@ -79,15 +79,20 @@ $header-height: 100px;
         font-size: 50px;
         margin: 0 0 80px;
       }
-      table {
+      .result__table {
         width: 100%;
+        margin: 0 0 60px;
         tr {
           width: 100%;
           th {
             text-align: center;
             width: 30%;
             padding: 0 0 30px;
-            font-size: 20px;
+            font-size: 30px;
+            @media screen and (max-width: 600px) {
+              font-size: 25px;
+              padding: 0 0 20px;
+            }
           }
           th.result__table__id {
             width: 10%;
@@ -95,7 +100,26 @@ $header-height: 100px;
           td {
             text-align: center;
             padding: 10px 0;
-            font-size: 18px;
+            font-weight: bold;
+            font-size: 25px;
+            @media screen and (max-width: 600px) {
+              font-size: 18px;
+            }
+          }
+          td.result__table__judge {
+            @media screen and (max-width: 600px) {
+              font-size: 25px
+            }
+          }
+        }
+        tr.correct {
+          &>td {
+            color: #098487;
+          }
+        }
+        tr.incorrect {
+          &>td {
+            color: #BC243C;
           }
         }
       }

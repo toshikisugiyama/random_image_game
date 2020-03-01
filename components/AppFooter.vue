@@ -123,7 +123,7 @@ $height: 100px;
   align-items: center;
   justify-content: center;
   z-index: 2;
-  background-color: #000;
+  background-color: #fff;
   transition: background-color 1s;
   &__container {
     display: flex;
