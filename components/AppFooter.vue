@@ -123,7 +123,7 @@ $height: 100px;
   align-items: center;
   justify-content: center;
   z-index: 2;
-  background-color: #000;
+  background-color: #fff;
   transition: background-color 1s;
   &__container {
     display: flex;
@@ -190,12 +190,12 @@ $height: 100px;
     align-items: center;
     transition: background-color 1s;
     user-select: none;
+    cursor: pointer;
     @media screen and (max-width: 600px) {
       font-size: 15px;
     }
   }
   &__button:hover {
-    cursor: pointer;
     background-color: #333;
   }
 }

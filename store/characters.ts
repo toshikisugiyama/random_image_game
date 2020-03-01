@@ -14,6 +14,12 @@ export default class Characters extends VuexModule {
     this.isDark = !this.isDark
   }
 
+  isSetting: boolean = false
+  @Mutation
+  toggleSetting (): void {
+    this.isSetting = !this.isSetting
+  }
+
   currentNumber: number = 0
   @Mutation
   commitRandomNumber (num: number): void {
@@ -32,6 +38,10 @@ export default class Characters extends VuexModule {
   }
 
   defaultCount: number = 10
+  @Mutation
+  setDefaultCount (num: number): void {
+    this.defaultCount = num
+  }
 
   remainingCount: number = this.defaultCount
   @Mutation
