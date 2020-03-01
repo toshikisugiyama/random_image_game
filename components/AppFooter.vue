@@ -1,15 +1,15 @@
 <template lang="pug">
   footer.footer
-    .footer__container.footer_rule(v-if="$route.name==='rule'")
-      .footer_rule__button.footer__button(@click="goToFront") もどる
+    .footer__container.footer_otherpage(v-if="$route.name!=='index'")
+      .footer_aftergame__button.footer__button(@click="resetAll") もどる
     .footer__container.footer_beforegame(v-else-if="counter<=0")
       .footer_beforegame__button.footer__button(@click="showRule") あそびかた
       .footer_beforegame__button.footer__button(@click="startGame") スタート
     .footer__container.footer_aftergame(v-else-if="remainingCount<=0")
-      .footer_aftergame__button.footer__button(@click="resetAll") もどる
+      .footer_aftergame__button.footer__button(@click="showResult") 結果
     .footer__container.footer_game(v-else)
       input.footer_game__input_name(v-model="inputtedName" placeholder="名前を入力  " autofocus)
-      .footer_game__button.footer__button(@click="moveOnNext") つぎへ
+      .footer_game__button.footer__button(@click="moveOnNext" :class="{unenable: !inputtedName.length}") つぎへ
 </template>
 
 <script lang="ts">
@@ -59,14 +59,16 @@ export default Vue.extend({
     }
   },
   methods: {
-    resetAll (): void {
+    resetAll () {
+      if (this.$route.name !== '/') {
+        this.$router.push('/')
+      }
       charactersStore.resetCounter()
       charactersStore.resetRemainingCount()
       charactersStore.resetName()
     },
-    goToFront (): void {
-      this.$router.push('/')
-      charactersStore.resetCounter()
+    showResult (): void {
+      this.$router.push('/result')
     },
     showRule (): void {
       this.$router.push('/rule')
@@ -77,11 +79,13 @@ export default Vue.extend({
       this.inputtedName = ''
     },
     moveOnNext (): void {
-      this.addCharacterData()
-      this.commitRandomNumber()
-      this.incrementCounter()
-      this.calculateCount()
-      this.inputtedName = ''
+      if (this.inputtedName.length) {
+        this.addCharacterData()
+        this.commitRandomNumber()
+        this.incrementCounter()
+        this.calculateCount()
+        this.inputtedName = ''
+      }
     },
     commitRandomNumber (): void {
       const min: number = 0
@@ -119,6 +123,8 @@ $height: 100px;
   align-items: center;
   justify-content: center;
   z-index: 2;
+  background-color: #000;
+  transition: background-color 1s;
   &__container {
     display: flex;
     align-items: center;
@@ -131,7 +137,7 @@ $height: 100px;
       padding: 0 10px;
     }
   }
-  &_rule {
+  &_otherpage {
     &__button {
       width: 100%;
     }
@@ -159,6 +165,12 @@ $height: 100px;
         width: 30%;
       }
     }
+    &__button.unenable {
+      opacity: 0.3;
+    }
+    &__button.unenable:hover {
+      cursor: default;
+    }
   }
   &_aftergame {
     &__button {
@@ -177,6 +189,7 @@ $height: 100px;
     justify-content: center;
     align-items: center;
     transition: background-color 1s;
+    user-select: none;
     @media screen and (max-width: 600px) {
       font-size: 15px;
     }
@@ -188,6 +201,7 @@ $height: 100px;
 }
 .container.dark {
   .footer {
+    background-color: #000;
     &__button {
       border: #fff 1px solid;
     }
