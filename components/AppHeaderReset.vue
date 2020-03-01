@@ -10,6 +10,9 @@ import { charactersStore } from '@/store'
 export default Vue.extend({
   methods: {
     resetAll (): void {
+      if (this.$route.name !== '/') {
+        this.$router.push('/')
+      }
       charactersStore.resetCounter()
       charactersStore.resetRemainingCount()
       charactersStore.resetName()

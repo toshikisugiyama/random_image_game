@@ -2,7 +2,7 @@
   header.header
     .header__container
       app-header-mode-switch
-      app-header-reset(v-if="counter !== 0")
+      app-header-reset(v-if="counter !== 0 && $route.name==='index'")
 </template>
 
 <script lang="ts">
