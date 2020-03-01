@@ -38,6 +38,10 @@ export default class Characters extends VuexModule {
   }
 
   defaultCount: number = 10
+  @Mutation
+  setDefaultCount (num: number): void {
+    this.defaultCount = num
+  }
 
   remainingCount: number = this.defaultCount
   @Mutation

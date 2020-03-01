@@ -27,6 +27,7 @@ $size: 25px;
   border-radius: 100%;
   box-sizing: border-box;
   background-color: #000;
+  opacity: 0.6;
   transition: all 1s;
   &:before {
     top: 50%;
@@ -38,6 +39,9 @@ $size: 25px;
     background-color: #fff;
     transition: all 1s;
   }
+}
+.header__set:hover {
+  opacity: 1;
 }
 .container.dark {
   .header__set {
