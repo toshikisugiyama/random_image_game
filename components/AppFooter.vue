@@ -10,6 +10,7 @@
     .footer__container.footer_game(v-else)
       input.footer_game__input_name(v-model="inputtedName" placeholder="名前を入力  " autofocus)
       .footer_game__button.footer__button(@click="moveOnNext" :class="{unenable: !inputtedName.length}") つぎへ
+    p.footer__copyright &#169;sugiyamatoshiki
 </template>
 
 <script lang="ts">
@@ -122,6 +123,8 @@ $height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
   z-index: 2;
   background-color: #fff;
   transition: background-color 1s;
@@ -198,12 +201,23 @@ $height: 100px;
   &__button:hover {
     background-color: #333;
   }
+  &__copyright {
+    font-size: 12px;
+    color: #000;
+    padding: 10px 0 0;
+    @media screen and (max-width: 600px) {
+      padding: 5px 0 0;
+    }
+  }
 }
 .container.dark {
   .footer {
     background-color: #000;
     &__button {
       border: #fff 1px solid;
+    }
+    &__copyright {
+      color: #fff;
     }
   }
 }
