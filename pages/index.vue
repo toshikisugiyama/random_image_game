@@ -1,5 +1,5 @@
 <template lang="pug">
-  main.main
+  main.main(:class="{'screen-fixed': isSetting}")
     h1.main__title {{ mainTitle }}
     .main__symbol.main__content(v-if="counter<=0") ?
     .main__finish.main__content(v-else-if="remainingCount<=0") おしまい
@@ -30,6 +30,9 @@ export default Vue.extend({
         return '名前を早く呼ぶゲーム'
       }
       return 'あと ' + this.remainingCount + ' 回'
+    },
+    isSetting (): boolean {
+      return charactersStore.isSetting
     }
   }
 })
@@ -79,6 +82,13 @@ $header-height: 100px;
       padding: 0 10px;
     }
   }
+}
+.main.screen-fixed {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 .container.dark {
   .main {
