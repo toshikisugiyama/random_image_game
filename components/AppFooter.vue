@@ -198,6 +198,18 @@ $height: 100px;
   &__button:hover {
     background-color: #333;
   }
+<<<<<<< HEAD
+=======
+  &__copyright {
+    font-size: 12px;
+    color: #000;
+    padding: 10px 0 0;
+    @media screen and (max-width: 600px) {
+      font-size: 8px;
+      padding: 5px 0 0;
+    }
+  }
+>>>>>>> 126384b... edit README and header
 }
 .container.dark {
   .footer {

@@ -28,23 +28,23 @@ export default Vue.extend({
       lists: [
         {
           id: 1,
-          text: 'スタートボタンをおす',
-          src: require('@/assets/images/rule1.svg')
+          text: 'スタートボタンをおしてゲームをはじめる',
+          src: require('@/static/images/rule1.svg')
         },
         {
           id: 2,
           text: '現れるキャラクターに名前をつける',
-          src: require('@/assets/images/rule2.svg')
+          src: require('@/static/images/rule2.svg')
         },
         {
           id: 3,
           text: '同じキャラクターが現れたら前につけた名前を答える',
-          src: require('@/assets/images/rule3.svg')
+          src: require('@/static/images/rule3.svg')
         },
         {
           id: 4,
           text: '結果を確認！',
-          src: require('@/assets/images/rule4.svg')
+          src: require('@/static/images/rule4.svg')
         }
       ]
     }
