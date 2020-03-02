@@ -16,6 +16,12 @@
 - 2回以上表示された画像の名前が最初につけた名前と一致するか判定する
 - 結果を表示する
 - 画像表示回数を設定できる
+- リセットボタンでリセットできる
+- ダークモードとライトモードを切替できる
+
+## Rule of this game
+
+[ゲームの説明](https://toshikisugiyama-images.netlify.com/rule) をご覧ください
 
 ## Build Setup
 
