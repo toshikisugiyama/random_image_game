@@ -1,4 +1,4 @@
-# (名前をつけて覚えて答えるゲーム v4.0](https://toshikisugiyama-images.netlify.com/)
+# [名前をつけて覚えて答えるゲーム v4.0](https://toshikisugiyama-images.netlify.com/)
 
 > random_image_game v4.0
 
