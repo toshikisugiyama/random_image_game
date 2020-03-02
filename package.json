@@ -1,7 +1,7 @@
 {
   "name": "random_image_game",
   "version": "1.0.0",
-  "description": "名前をつけて早く呼ぶゲーム",
+  "description": "名前をつけて覚えて答えるゲーム",
   "author": "sugiyamatoshiki",
   "private": true,
   "scripts": {

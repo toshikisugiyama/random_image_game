@@ -27,7 +27,7 @@ export default Vue.extend({
     },
     mainTitle (): string {
       if (this.counter <= 0) {
-        return '名前を早く呼ぶゲーム'
+        return '名前をつけて覚えて答えるゲーム'
       }
       return 'あと ' + this.remainingCount + ' 回'
     },
