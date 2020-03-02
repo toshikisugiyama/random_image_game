@@ -206,6 +206,7 @@ $height: 100px;
     color: #000;
     padding: 10px 0 0;
     @media screen and (max-width: 600px) {
+      font-size: 8px;
       padding: 5px 0 0;
     }
   }
