@@ -8,7 +8,7 @@
     .footer__container.footer_aftergame(v-else-if="remainingCount<=0")
       .footer_aftergame__button.footer__button(@click="showResult") 結果
     .footer__container.footer_game(v-else)
-      input.footer_game__input_name(v-model="inputtedName" placeholder="名前を入力  " autofocus)
+      input.footer_game__input_name(v-model="inputtedName" @keydown.self.prevent.enter="moveOnNext" placeholder="名前を入力" autofocus)
       .footer_game__button.footer__button(@click="moveOnNext" :class="{unenable: !validateName}") つぎへ
     p.footer__copyright &#169;sugiyamatoshiki
 </template>
