@@ -4,25 +4,37 @@ transition(name="modal")
     .modal__wrapper
       .modal__wrapper__container
         .modal__wrapper__container__item.title
-          h1.title 何回あそぶ？
+          h1.title {{ title }}
         .modal__wrapper__container__item
-          input(@blur="settedDefaultCount=$event.target.value" :value="defaultCount" autofocus)
-          span 回
+          input(@blur="settedDefaultCount=$event.target.value" :value="defaultCount" :min="min" :max="max" type="number" autofocus)
+          span {{ unit }}
         .modal__wrapper__container__item.buttons
-          .modal__wrapper__container__item__button(@click="toggleSetting") キャンセル
-          .modal__wrapper__container__item__button(@click="setDefaultCount(settedDefaultCount)") けってい
+          .modal__wrapper__container__item__button(@click="toggleSetting") {{ cancel }}
+          .modal__wrapper__container__item__button(@click="validateDefaultCount(settedDefaultCount)") {{ okay }}
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { charactersStore } from '@/store'
 interface Data {
-  settedDefaultCount: number
+  title: string,
+  settedDefaultCount: number,
+  min: number,
+  max: number,
+  unit: string,
+  cancel: string,
+  okay: string
 }
 export default Vue.extend({
   data (): Data {
     return {
-      settedDefaultCount: 10
+      title: '何回あそぶ？',
+      settedDefaultCount: 10,
+      min: 3,
+      max: 100,
+      unit: '回',
+      cancel: 'キャンセル',
+      okay: 'けってい'
     }
   },
   computed: {
@@ -41,6 +53,18 @@ export default Vue.extend({
       charactersStore.setDefaultCount(num)
       charactersStore.resetRemainingCount()
       charactersStore.toggleSetting()
+    },
+    validateDefaultCount (num: number): void {
+      const isValid = /^[1-9][0-9]*/.test(String(num)) && num >= this.min && num <= this.max
+      if (isValid) {
+        this.setDefaultCount(num)
+        return
+      }
+      if (num < this.min) {
+        this.setDefaultCount(this.min)
+        return
+      }
+      this.setDefaultCount(this.max)
     }
   }
 })
