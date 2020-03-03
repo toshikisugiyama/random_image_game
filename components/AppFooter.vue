@@ -9,7 +9,7 @@
       .footer_aftergame__button.footer__button(@click="showResult") 結果
     .footer__container.footer_game(v-else)
       input.footer_game__input_name(v-model="inputtedName" placeholder="名前を入力  " autofocus)
-      .footer_game__button.footer__button(@click="moveOnNext" :class="{unenable: !inputtedName.length}") つぎへ
+      .footer_game__button.footer__button(@click="moveOnNext" :class="{unenable: !validateName}") つぎへ
     p.footer__copyright &#169;sugiyamatoshiki
 </template>
 
@@ -57,6 +57,10 @@ export default Vue.extend({
     },
     namedCharacter (): InputtedCharacterData | undefined {
       return this.inputtedCharacterData.find(item => item.imageId === this.currentNumber)
+    },
+    validateName (): boolean {
+      const isValid = /^.{1,10}$/.test(this.inputtedName)
+      return isValid
     }
   },
   methods: {
@@ -80,7 +84,7 @@ export default Vue.extend({
       this.inputtedName = ''
     },
     moveOnNext (): void {
-      if (this.inputtedName.length) {
+      if (this.validateName) {
         this.addCharacterData()
         this.commitRandomNumber()
         this.incrementCounter()
