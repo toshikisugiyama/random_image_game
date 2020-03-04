@@ -5,18 +5,18 @@
     .main__finish.main__content(v-else-if="remainingCount<=0") おしまい
     .main__character(v-else)
       main-character
-      //- main-judgment
+      main-judgment
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { charactersStore } from '@/store'
 import MainCharacter from '@/components/MainCharacter.vue'
-// import MainJudgment from '@/components/MainJudgment.vue'
+import MainJudgment from '@/components/MainJudgment.vue'
 export default Vue.extend({
   components: {
-    MainCharacter
-    // MainJudgment
+    MainCharacter,
+    MainJudgment
   },
   computed: {
     counter (): number {
