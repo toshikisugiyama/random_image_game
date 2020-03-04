@@ -1,8 +1,7 @@
 <template lang="pug">
-  transition(:duration="500")
     .judgment
-      .judgment__correct(v-if="judgment===1") 正解
-      .judgment__incorrect(v-if="judgment===2") 不正解
+      .judgment__correct(v-show="judgment===1") 正解
+      .judgment__incorrect(v-show="judgment===2") 不正解
 </template>
 
 <script lang="ts">
@@ -10,17 +9,35 @@ import Vue from 'vue'
 import { charactersStore } from '@/store'
 export default Vue.extend({
   computed: {
-    judgment (): number {
-      const data = charactersStore.inputtedCharacterData
-      if (data[data.length - 1]) {
-        return data[data.length - 1].erratum
-      }
-      return 0
-    }
+    judgment (): number { return charactersStore.judgment }
   }
 })
 </script>
 
 <style lang="scss" scoped>
-
+.judgment {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  text-shadow: 2px 2px 0 #000;
+  color: red;
+  font-size: 150px;
+  @media screen and (max-width: 600px) {
+    font-size: 80px;
+  }
+  &__correct,
+  &__incorrect {
+    animation: showMessage 5s linear 0s;
+  }
+  @keyframes showMessage {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
 </style>
