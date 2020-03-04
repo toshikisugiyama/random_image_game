@@ -86,9 +86,17 @@ export default Vue.extend({
     moveOnNext (): void {
       if (this.validateName) {
         this.addCharacterData()
-        this.commitRandomNumber()
-        this.incrementCounter()
-        this.calculateCount()
+        this.judgeResult()
+        setTimeout(this.resetResult, 1000)
+        if (charactersStore.judgment !== 0) {
+          setTimeout(this.calculateCount, 1000)
+          setTimeout(this.incrementCounter, 1000)
+          setTimeout(this.commitRandomNumber, 1000)
+        } else {
+          this.calculateCount()
+          this.incrementCounter()
+          this.commitRandomNumber()
+        }
         this.inputtedName = ''
       }
     },
@@ -105,6 +113,12 @@ export default Vue.extend({
         name: this.inputtedName,
         erratum: this.erratumStatus
       })
+    },
+    judgeResult (): void {
+      charactersStore.judgeResult()
+    },
+    resetResult (): void {
+      charactersStore.resetJudgment()
     },
     incrementCounter (): void {
       charactersStore.incrementCounter()
