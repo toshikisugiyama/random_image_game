@@ -10,7 +10,9 @@ import { charactersStore } from '@/store'
 export default Vue.extend({
   methods: {
     resetAll (): void {
-      if (this.$route.name !== '/') {
+      if (this.$i18n.locale === 'en') {
+        this.$router.push('/en/')
+      } else {
         this.$router.push('/')
       }
       charactersStore.resetCounter()

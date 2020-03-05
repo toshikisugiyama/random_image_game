@@ -2,7 +2,7 @@
   main.main(:class="{'screen-fixed': isSetting}")
     h1.main__title {{ mainTitle }}
     .main__symbol.main__content(v-if="counter<=0") ?
-    .main__finish.main__content(v-else-if="remainingCount<=0") おしまい
+    .main__finish.main__content(v-else-if="remainingCount<=0") {{ gameover }}
     .main__character(v-else)
       main-character
       main-judgment
@@ -27,10 +27,11 @@ export default Vue.extend({
     },
     mainTitle (): string {
       if (this.counter <= 0) {
-        return '名前をつけて覚えて答えるゲーム'
+        return this.$tc('MAIN_TITLE').toUpperCase()
       }
-      return 'あと ' + this.remainingCount + ' 回'
+      return this.$tc('MAIN_MORE').toUpperCase() + ' ' + this.remainingCount + ' ' + this.$tc('MAIN_TIMES').toUpperCase()
     },
+    gameover (): string { return this.$tc('MAIN_FINISH').toUpperCase() },
     isSetting (): boolean {
       return charactersStore.isSetting
     }
@@ -76,6 +77,7 @@ $header-height: 100px;
   &__finish {
     font-size: 80px;
     width: 80%;
+    font-weight: bold;
     @media screen and (max-width: 600px) {
       font-size: 30px;
       width: 100%;

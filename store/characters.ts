@@ -1,4 +1,4 @@
-import { Module, VuexModule, Mutation, Action } from 'vuex-module-decorators'
+import { Module, VuexModule, Mutation } from 'vuex-module-decorators'
 import { Character } from '~/models/Character'
 import { InputtedCharacterData } from '~/models/InputtedCharacterData'
 
@@ -39,21 +39,16 @@ export default class Characters extends VuexModule {
 
   judgment: number = 0
   @Mutation
-  setJudgment (judgment: number) {
-    this.judgment = judgment
-  }
-
-  @Action
   judgeResult (): void {
     const data = this.inputtedCharacterData
     if (data[data.length - 1]) {
-      this.setJudgment(data[data.length - 1].erratum)
+      this.judgment = data[data.length - 1].erratum
     }
   }
 
-  @Action
+  @Mutation
   resetJudgment (): void {
-    this.setJudgment(0)
+    this.judgment = 0
   }
 
   defaultCount: number = 10

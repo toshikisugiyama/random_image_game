@@ -17,27 +17,23 @@ transition(name="modal")
 import Vue from 'vue'
 import { charactersStore } from '@/store'
 interface Data {
-  title: string,
   settedDefaultCount: number,
   min: number,
-  max: number,
-  unit: string,
-  cancel: string,
-  okay: string
+  max: number
 }
 export default Vue.extend({
   data (): Data {
     return {
-      title: '何回あそぶ？',
       settedDefaultCount: 10,
       min: 3,
-      max: 100,
-      unit: '回',
-      cancel: 'キャンセル',
-      okay: 'けってい'
+      max: 100
     }
   },
   computed: {
+    title (): string { return this.$tc('MAIN_MODAL_TITLE') },
+    unit (): string { return this.$tc('MAIN_MODAL_UNIT') },
+    cancel (): string { return this.$tc('MAIN_MODAL_CANCEL') },
+    okay (): string { return this.$tc('MAIN_MODAL_OKAY') },
     defaultCount (): number {
       return charactersStore.defaultCount
     },
