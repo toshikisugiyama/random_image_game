@@ -1,4 +1,5 @@
 
+import i18n from './nuxt-i18n.config.ts'
 export default {
   mode: 'universal',
   /*
@@ -47,6 +48,10 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    [
+      'nuxt-i18n',
+      i18n
+    ]
   ],
   /*
   ** Build configuration

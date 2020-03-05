@@ -1,15 +1,15 @@
 <template lang="pug">
   footer.footer
-    .footer__container.footer_otherpage(v-if="$route.name!=='index'")
-      .footer_aftergame__button.footer__button(@click="resetAll") もどる
+    .footer__container.footer_otherpage(v-if="!$route.name.includes('index')")
+      .footer_aftergame__button.footer__button(@click="resetAll") {{ back }}
     .footer__container.footer_beforegame(v-else-if="counter<=0")
-      .footer_beforegame__button.footer__button(@click="showRule") あそびかた
-      .footer_beforegame__button.footer__button(@click="startGame") スタート
+      .footer_beforegame__button.footer__button(@click="showRule") {{ rule }}
+      .footer_beforegame__button.footer__button(@click="startGame") {{ start }}
     .footer__container.footer_aftergame(v-else-if="remainingCount<=0")
-      .footer_aftergame__button.footer__button(@click="showResult") 結果
+      .footer_aftergame__button.footer__button(@click="showResult") {{ result }}
     .footer__container.footer_game(v-else)
-      input.footer_game__input_name(v-model="inputtedName" @keydown.self.prevent.enter="moveOnNext" placeholder="名前を入力" autofocus)
-      .footer_game__button.footer__button(@click="moveOnNext" :class="{unenable: !validateName}") つぎへ
+      input.footer_game__input_name(v-model="inputtedName" @keydown.self.prevent.enter="moveOnNext" :placeholder="enterName" autofocus)
+      .footer_game__button.footer__button(@click="moveOnNext" :class="{unenable: !validateName}") {{ next }}
     p.footer__copyright &#169;sugiyamatoshiki
 </template>
 
@@ -28,6 +28,12 @@ export default Vue.extend({
     }
   },
   computed: {
+    back (): string { return this.$tc('APP_FOOTER_BACK').toUpperCase() },
+    rule (): string { return this.$tc('APP_FOOTER_RULE').toUpperCase() },
+    start (): string { return this.$tc('APP_FOOTER_START').toUpperCase() },
+    result (): string { return this.$tc('APP_FOOTER_RESULT').toUpperCase() },
+    enterName (): string { return this.$tc('APP_FOOTER_ENTERNAME') },
+    next (): string { return this.$tc('APP_FOOTER_NEXT').toUpperCase() },
     maxNumber (): number {
       return charactersStore.characters.length
     },
@@ -65,7 +71,9 @@ export default Vue.extend({
   },
   methods: {
     resetAll () {
-      if (this.$route.name !== '/') {
+      if (this.$i18n.locale === 'en') {
+        this.$router.push('/en/')
+      } else {
         this.$router.push('/')
       }
       charactersStore.resetCounter()
@@ -73,10 +81,18 @@ export default Vue.extend({
       charactersStore.resetName()
     },
     showResult (): void {
-      this.$router.push('/result')
+      if (this.$i18n.locale === 'en') {
+        this.$router.push('/en/result')
+      } else {
+        this.$router.push('/result')
+      }
     },
     showRule (): void {
-      this.$router.push('/rule')
+      if (this.$i18n.locale === 'en') {
+        this.$router.push('/en/rule')
+      } else {
+        this.$router.push('/rule')
+      }
     },
     startGame (): void {
       this.commitRandomNumber()

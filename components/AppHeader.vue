@@ -2,8 +2,10 @@
   header.header
     .header__container
       app-header-mode-switch
-      app-header-reset(v-if="counter!==0 && $route.name==='index'")
-      app-header-set(v-if="counter===0 && $route.name==='index'")
+      .header__container__item
+        app-header-i18n
+        app-header-reset(v-if="counter!==0 && $route.name.includes('index')")
+        app-header-set(v-if="counter===0 && $route.name.includes('index')")
 </template>
 
 <script lang="ts">
@@ -11,12 +13,14 @@ import Vue from 'vue'
 import AppHeaderModeSwitch from '@/components/AppHeaderModeSwitch.vue'
 import AppHeaderReset from '@/components/AppHeaderReset.vue'
 import AppHeaderSet from '@/components/AppHeaderSet.vue'
+import AppHeaderI18n from '@/components/AppHeaderI18n.vue'
 import { charactersStore } from '@/store'
 export default Vue.extend({
   components: {
     AppHeaderModeSwitch,
     AppHeaderReset,
-    AppHeaderSet
+    AppHeaderSet,
+    AppHeaderI18n
   },
   computed: {
     counter (): number {
@@ -48,6 +52,11 @@ $height: 80px;
     @media screen and (max-width: 600px) {
       width: 100%;
       padding: 0 10px;
+    }
+    &__item {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
     }
   }
 }
