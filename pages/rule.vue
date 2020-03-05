@@ -11,39 +11,35 @@
 
 <script lang="ts">
 import Vue from 'vue'
-interface Data {
-  title: string,
-  introduction: string,
-  lists: {
-    id: number,
-    text: string,
-    src: string
-  }[]
+interface Lists {
+  id: number,
+  text: string,
+  src: string
 }
 export default Vue.extend({
-  data (): Data {
-    return {
-      title: 'あそびかた',
-      introduction: '　これは、現れるキャラクターに特徴を捉えた名前を付け、以降同じものが現れたらその名前を答えるゲームです。おかしな名前を付けたり、最初のうちに「簡単」と侮っていたら途中でまったく思い出せなくなったりと、笑いが絶えずに盛り上がります。',
-      lists: [
+  computed: {
+    title (): string { return this.$tc('RULE_TITLE').toUpperCase() },
+    introduction (): string { return this.$tc('RULE_INTRODUCTION') },
+    lists (): Lists[] {
+      return [
         {
           id: 1,
-          text: 'スタートボタンをおしてゲームをはじめる',
+          text: this.$tc('RULE_LIST1'),
           src: require('@/static/images/rule1.svg')
         },
         {
           id: 2,
-          text: '現れるキャラクターに名前をつける',
+          text: this.$tc('RULE_LIST2'),
           src: require('@/static/images/rule2.svg')
         },
         {
           id: 3,
-          text: '同じキャラクターが現れたら前につけた名前を答える',
+          text: this.$tc('RULE_LIST3'),
           src: require('@/static/images/rule3.svg')
         },
         {
           id: 4,
-          text: '結果を確認！',
+          text: this.$tc('RULE_LIST4'),
           src: require('@/static/images/rule4.svg')
         }
       ]

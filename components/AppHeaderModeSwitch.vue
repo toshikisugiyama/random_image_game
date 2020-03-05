@@ -15,9 +15,9 @@ export default Vue.extend({
     },
     modeStatus (): string {
       if (this.isDark) {
-        return 'light'
+        return this.$tc('APP_HEADER_MODE_SWITCH_LIGHT')
       }
-      return 'dark'
+      return this.$tc('APP_HEADER_MODE_SWITCH_DARK')
     }
   },
   methods: {
@@ -60,6 +60,7 @@ $height: 30px;
       background-color: rgb(186, 221, 31);
       .mode {
         color: #333;
+        user-select: none;
       }
     }
     &__button {
