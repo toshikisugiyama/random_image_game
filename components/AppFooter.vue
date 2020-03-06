@@ -78,7 +78,7 @@ export default Vue.extend({
       }
       charactersStore.resetCounter()
       charactersStore.resetRemainingCount()
-      charactersStore.resetName()
+      setTimeout(charactersStore.resetName, 800)
     },
     showResult (): void {
       if (this.$i18n.locale === 'en') {

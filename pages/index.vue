@@ -32,7 +32,7 @@ export default Vue.extend({
       return (this.$tc('MAIN_MORE') + ' ' + this.remainingCount + ' ' + this.$tc('MAIN_TIMES') + this.toPluralForm).toUpperCase()
     },
     toPluralForm (): string {
-      if (this.remainingCount !== 0 && this.remainingCount !== 1) {
+      if (this.remainingCount !== 0 && this.remainingCount !== 1 && this.$i18n.locale === 'en') {
         return 's'
       }
       return ''
