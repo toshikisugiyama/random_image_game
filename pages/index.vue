@@ -30,9 +30,19 @@ export default Vue.extend({
         return this.$tc('MAIN_TITLE').toUpperCase()
       }
 <<<<<<< HEAD
+<<<<<<< HEAD
       return 'あと ' + this.remainingCount + ' 回'
 =======
       return this.$tc('MAIN_MORE').toUpperCase() + ' ' + this.remainingCount + ' ' + this.$tc('MAIN_TIMES').toUpperCase()
+=======
+      return (this.$tc('MAIN_MORE') + ' ' + this.remainingCount + ' ' + this.$tc('MAIN_TIMES') + this.toPluralForm).toUpperCase()
+    },
+    toPluralForm (): string {
+      if (this.remainingCount !== 0 && this.remainingCount !== 1) {
+        return 's'
+      }
+      return ''
+>>>>>>> 1142e7a... implement count plural form for english version
     },
     gameover (): string { return this.$tc('MAIN_FINISH').toUpperCase() },
     isSetting (): boolean {
