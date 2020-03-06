@@ -4,7 +4,7 @@
       h1.result__container__title {{ title }}
       .result__container__content
         h2.result__container__content__point {{ resultPoint + ' ' + point }}
-        table.result__table
+        table.result__table(:class="{'result__table_en': $i18n.locale === 'en'}")
           tr
             th.result__table__id
             th.result__table__name {{ name }}
@@ -125,6 +125,15 @@ $header-height: 100px;
         tr.incorrect {
           &>td {
             color: #BC243C;
+          }
+        }
+        &_en {
+          tr {
+            th {
+              @media screen and (max-width: 600px) {
+                font-size: 16px;
+              }
+            }
           }
         }
       }
