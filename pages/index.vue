@@ -29,7 +29,13 @@ export default Vue.extend({
       if (this.counter <= 0) {
         return this.$tc('MAIN_TITLE').toUpperCase()
       }
-      return this.$tc('MAIN_MORE').toUpperCase() + ' ' + this.remainingCount + ' ' + this.$tc('MAIN_TIMES').toUpperCase()
+      return (this.$tc('MAIN_MORE') + ' ' + this.remainingCount + ' ' + this.$tc('MAIN_TIMES') + this.toPluralForm).toUpperCase()
+    },
+    toPluralForm (): string {
+      if (this.remainingCount !== 0 && this.remainingCount !== 1) {
+        return 's'
+      }
+      return ''
     },
     gameover (): string { return this.$tc('MAIN_FINISH').toUpperCase() },
     isSetting (): boolean {
