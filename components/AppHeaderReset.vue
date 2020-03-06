@@ -31,7 +31,7 @@ $size: 22px;
   height: $size + 6px;
   border-radius: 50%;
   border: 1px solid #333;
-  margin: 0;
+  margin: 0 0 0 20px;
   opacity: 0.6;
   transition: opacity 0.8s;
   cursor: pointer;

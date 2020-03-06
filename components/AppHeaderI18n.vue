@@ -6,7 +6,6 @@
 
 <style lang="scss" scoped>
 .i18n {
-  margin: 0 20px;
   &__link {
     color: #000;
     text-decoration: none;
