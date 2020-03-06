@@ -22,26 +22,10 @@ export default Vue.extend({
     introduction (): string { return this.$tc('RULE_INTRODUCTION') },
     lists (): Lists[] {
       return [
-        {
-          id: 1,
-          text: this.$tc('RULE_LIST1'),
-          src: require('@/static/images/rule1.svg')
-        },
-        {
-          id: 2,
-          text: this.$tc('RULE_LIST2'),
-          src: require('@/static/images/rule2.svg')
-        },
-        {
-          id: 3,
-          text: this.$tc('RULE_LIST3'),
-          src: require('@/static/images/rule3.svg')
-        },
-        {
-          id: 4,
-          text: this.$tc('RULE_LIST4'),
-          src: require('@/static/images/rule4.svg')
-        }
+        { id: 1, text: this.$tc('RULE_LIST1'), src: require('@/static/images/rule1.svg') },
+        { id: 2, text: this.$tc('RULE_LIST2'), src: require('@/static/images/rule2.svg') },
+        { id: 3, text: this.$tc('RULE_LIST3'), src: require('@/static/images/rule3.svg') },
+        { id: 4, text: this.$tc('RULE_LIST4'), src: require('@/static/images/rule4.svg') }
       ]
     }
   }
@@ -72,6 +56,7 @@ $header-height: 100px;
     }
     &__introduction {
       margin: 0 0 40px 0;
+      text-align: justify;
     }
     &__list {
       margin: 0 0 60px 0;
