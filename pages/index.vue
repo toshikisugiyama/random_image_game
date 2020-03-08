@@ -31,6 +31,7 @@ export default Vue.extend({
       }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       return 'あと ' + this.remainingCount + ' 回'
 =======
       return this.$tc('MAIN_MORE').toUpperCase() + ' ' + this.remainingCount + ' ' + this.$tc('MAIN_TIMES').toUpperCase()
@@ -43,6 +44,18 @@ export default Vue.extend({
       }
       return ''
 >>>>>>> 1142e7a... implement count plural form for english version
+=======
+      if (this.remainingCount === 0) {
+        return ''
+      }
+      if (this.$i18n.locale === 'ja') {
+        return this.$tc('MAIN_MORE') + ' ' + this.remainingCount + ' ' + this.$tc('MAIN_TIMES')
+      }
+      if (this.remainingCount > 1) {
+        return this.remainingCount + ' ' + (this.$tc('MAIN_TIMES') + 's' + ' ' + this.$tc('MAIN_MORE')).toUpperCase()
+      }
+      return this.remainingCount + ' ' + (this.$tc('MAIN_MORE') + ' ' + this.$tc('MAIN_TIMES')).toUpperCase()
+>>>>>>> c04071b... fix English
     },
     gameover (): string { return this.$tc('MAIN_FINISH').toUpperCase() },
     isSetting (): boolean {
