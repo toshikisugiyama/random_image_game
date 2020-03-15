@@ -14,8 +14,8 @@
   "RULE_LIST1": "Push the start button and start the game.",
   "RULE_LIST2": "Name characters which is displayed on the screen. (Type its name you came up with in the text box.)",
   "RULE_LIST3": "Answer the name of the character which is displayed more than twice. (Type its name you named before in the text box.)",
-  "RULE_LIST4": "Check your result!",
-  "RESULT_TITLE": "result",
+  "RULE_LIST4": "Check your score!",
+  "RESULT_TITLE": "score",
   "RESULT_POINT": "%",
   "RESULT_NAME": "name",
   "RESULT_CORRECT": "correct name",
@@ -23,7 +23,7 @@
   "APP_FOOTER_BACK": "back",
   "APP_FOOTER_RULE": "how to play",
   "APP_FOOTER_START": "start",
-  "APP_FOOTER_RESULT": "result",
+  "APP_FOOTER_RESULT": "score",
   "APP_FOOTER_NEXT": "next",
   "APP_FOOTER_ENTERNAME": "Type the name"
 }
