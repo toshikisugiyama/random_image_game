@@ -37,6 +37,7 @@ $header-height: 100px;
   flex-wrap: wrap;
   min-height: $height;
   height: 100vh;
+  background-color: #fff;
   transition: background-color 1s;
   &__title {
     font-size: 30px;

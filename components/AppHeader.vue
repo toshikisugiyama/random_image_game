@@ -1,6 +1,7 @@
 <template lang="pug">
   header.header
-    app-header-mode-switch
+    .header__container
+      app-header-mode-switch
 </template>
 
 <script lang="ts">
@@ -15,7 +16,6 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 $height: 80px;
-$space: 15px;
 .header {
   width: 100%;
   height: $height;
@@ -24,7 +24,18 @@ $space: 15px;
   right: 0;
   display: flex;
   align-items: center;
-  padding: 0 $space;
   z-index: 2;
+  &__container {
+    margin: 0 auto;
+    height: $height;
+    display: flex;
+    align-items: center;
+    width: 80%;
+    max-width: 1264px;
+    @media screen and (max-width: 600px) {
+      width: 100%;
+      padding: 0 10px;
+    }
+  }
 }
 </style>
