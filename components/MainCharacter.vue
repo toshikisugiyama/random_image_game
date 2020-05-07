@@ -18,13 +18,6 @@ export default Vue.extend({
     currentCharacter (): string {
       return this.characters[this.currentNumber].image
     }
-  },
-  methods: {
-    getRandomNum (min: number, max: number): number {
-      min = Math.ceil(min)
-      max = Math.floor(max)
-      return Math.floor(Math.random() * (max - min)) + min
-    }
   }
 })
 </script>
@@ -39,6 +32,7 @@ export default Vue.extend({
   }
 }
 .character {
+  user-select: none;
   &>img {
     object-fit: contain;
     animation: showCharacter .5s linear 0s;

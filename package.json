@@ -1,6 +1,6 @@
 {
   "name": "random_image_game",
-  "version": "4.2.0",
+  "version": "4.3.0",
   "description": "名前をつけて覚えて答えるゲーム",
   "author": "sugiyamatoshiki",
   "private": true,
@@ -13,7 +13,10 @@
   },
   "dependencies": {
     "@nuxt/typescript-runtime": "^0.3.10",
+    "acorn": "^7.1.1",
     "eslint": "^6.8.0",
+    "kind-of": "^6.0.3",
+    "minimist": "^1.2.5",
     "nuxt": "^2.0.0",
     "nuxt-i18n": "^6.6.0",
     "vuex-module-decorators": "^0.16.1"
