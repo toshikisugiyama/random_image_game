@@ -1,6 +1,6 @@
-# [名前をつけて覚えて答えるゲーム v4.0](https://toshikisugiyama-images.netlify.com/)
+# [名前をつけて覚えて答えるゲーム v4.2](https://toshikisugiyama-images.netlify.com/)
 
-> random_image_game v4.1
+> random_image_game v4.2
 
 ## Environment
 
@@ -24,6 +24,7 @@
 - つけられる名前の文字数の最小値は1、最大値は10(v4.0)
 - 二回以上表示された画像に対しては、名前を入力、決定した時点で正誤のメッセージを表示させる(v4.1)
 - 正誤のメッセージを表示させた場合のみ次の画像へ移るタイミングを遅らせる(v4.1)
+- i18nを導入し、日本語と英語を切り替えられるようにする(v4.2)
 
 ## Rule of this game
 

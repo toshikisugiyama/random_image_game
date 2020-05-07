@@ -2,7 +2,7 @@
   main.main
     h1.main__title {{ mainTitle }}
     .main__symbol.main__content(v-if="counter<=0") ?
-    .main__finish.main__content(v-else-if="remainingCount<=0") おしまい
+    .main__finish.main__content(v-else-if="remainingCount<=0") {{ gameover }}
     .main__character(v-else)
       main-character
       main-judgment
@@ -27,9 +27,40 @@ export default Vue.extend({
     },
     mainTitle (): string {
       if (this.counter <= 0) {
-        return '名前をつけて覚えて答えるゲーム'
+        return this.$tc('MAIN_TITLE').toUpperCase()
       }
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
       return 'あと ' + this.remainingCount + ' 回'
+=======
+      return this.$tc('MAIN_MORE').toUpperCase() + ' ' + this.remainingCount + ' ' + this.$tc('MAIN_TIMES').toUpperCase()
+=======
+      return (this.$tc('MAIN_MORE') + ' ' + this.remainingCount + ' ' + this.$tc('MAIN_TIMES') + this.toPluralForm).toUpperCase()
+    },
+    toPluralForm (): string {
+      if (this.remainingCount !== 0 && this.remainingCount !== 1 && this.$i18n.locale === 'en') {
+        return 's'
+      }
+      return ''
+>>>>>>> 1142e7a... implement count plural form for english version
+=======
+      if (this.remainingCount === 0) {
+        return ''
+      }
+      if (this.$i18n.locale === 'ja') {
+        return this.$tc('MAIN_MORE') + ' ' + this.remainingCount + ' ' + this.$tc('MAIN_TIMES')
+      }
+      if (this.remainingCount > 1) {
+        return this.remainingCount + ' ' + (this.$tc('MAIN_TIMES') + 's' + ' ' + this.$tc('MAIN_MORE')).toUpperCase()
+      }
+      return this.remainingCount + ' ' + (this.$tc('MAIN_MORE') + ' ' + this.$tc('MAIN_TIMES')).toUpperCase()
+>>>>>>> c04071b... fix English
+    },
+    gameover (): string { return this.$tc('MAIN_FINISH').toUpperCase() },
+    isSetting (): boolean {
+      return charactersStore.isSetting
+>>>>>>> 2edac51... implement language swtch from Japanese to English
     }
   }
 })
@@ -73,6 +104,7 @@ $header-height: 100px;
   &__finish {
     font-size: 80px;
     width: 80%;
+    font-weight: bold;
     @media screen and (max-width: 600px) {
       font-size: 30px;
       width: 100%;

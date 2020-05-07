@@ -5,9 +5,9 @@ transition(name="modal")
       .modal__wrapper__container
         .modal__wrapper__container__item.title
           h1.title {{ title }}
-        .modal__wrapper__container__item
+        .modal__wrapper__container__item(:class="{'modal__wrapper__container__item_en': $i18n.locale==='en'}")
           input(@blur="settedDefaultCount=$event.target.value" :value="defaultCount" :min="min" :max="max" type="number" autofocus)
-          span {{ unit }}
+          span(v-if="$i18n.locale==='ja'") {{ unit }}
         .modal__wrapper__container__item.buttons
           .modal__wrapper__container__item__button(@click="toggleSetting") {{ cancel }}
           .modal__wrapper__container__item__button(@click="validateDefaultCount(settedDefaultCount)") {{ okay }}
@@ -17,27 +17,23 @@ transition(name="modal")
 import Vue from 'vue'
 import { charactersStore } from '@/store'
 interface Data {
-  title: string,
   settedDefaultCount: number,
   min: number,
-  max: number,
-  unit: string,
-  cancel: string,
-  okay: string
+  max: number
 }
 export default Vue.extend({
   data (): Data {
     return {
-      title: '何回あそぶ？',
       settedDefaultCount: 10,
       min: 3,
-      max: 100,
-      unit: '回',
-      cancel: 'キャンセル',
-      okay: 'けってい'
+      max: 100
     }
   },
   computed: {
+    title (): string { return this.$tc('MAIN_MODAL_TITLE') },
+    unit (): string { return this.$tc('MAIN_MODAL_UNIT') },
+    cancel (): string { return this.$tc('MAIN_MODAL_CANCEL').toUpperCase() },
+    okay (): string { return this.$tc('MAIN_MODAL_OKAY').toUpperCase() },
     defaultCount (): number {
       return charactersStore.defaultCount
     },
@@ -154,6 +150,11 @@ $height: 80px;
         }
         &__button:hover {
           background-color: #333;
+        }
+      }
+      &__item_en {
+        &>input {
+          width: 100%;
         }
       }
       &__item.title {

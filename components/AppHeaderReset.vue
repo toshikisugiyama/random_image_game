@@ -10,7 +10,9 @@ import { charactersStore } from '@/store'
 export default Vue.extend({
   methods: {
     resetAll (): void {
-      if (this.$route.name !== '/') {
+      if (this.$i18n.locale === 'en') {
+        this.$router.push('/en/')
+      } else {
         this.$router.push('/')
       }
       charactersStore.resetCounter()
@@ -29,7 +31,7 @@ $size: 22px;
   height: $size + 6px;
   border-radius: 50%;
   border: 1px solid #333;
-  margin: 0;
+  margin: 0 0 0 20px;
   opacity: 0.6;
   transition: opacity 0.8s;
   cursor: pointer;

@@ -17,6 +17,7 @@ export default Vue.extend({
 <style lang="scss" scoped>
 $size: 25px;
 .header__set {
+  margin: 0 0 0 20px;
   cursor: pointer;
   display: flex;
   justify-content: center;

@@ -1,15 +1,15 @@
 <template lang="pug">
   main.result
     .result__container
-      h1.result__container__title 結果発表
+      h1.result__container__title {{ title }}
       .result__container__content
-        h2.result__container__content__point {{ resultPoint }} 点
-        table.result__table
+        h2.result__container__content__point {{ resultPoint + ' ' + point }}
+        table.result__table(:class="{'result__table_en': $i18n.locale === 'en'}")
           tr
             th.result__table__id
-            th.result__table__name 名前
-            th.result__table__correct 正解
-            th.result__table__judge 判定
+            th.result__table__name {{ name }}
+            th.result__table__correct {{ correct }}
+            th.result__table__judge {{ judge }}
           tr(v-for="data in inputtedCharacterData" :key="data.id" :class="{correct: data.erratum===1, incorrect: data.erratum===2}")
             td.result__table__id {{ data.id }}
             td.result__table__name {{ data.name }}
@@ -23,6 +23,11 @@ import { charactersStore } from '@/store'
 import { InputtedCharacterData } from '~/models/InputtedCharacterData'
 export default Vue.extend({
   computed: {
+    title (): string { return this.$tc('RESULT_TITLE').toUpperCase() },
+    point (): string { return this.$tc('RESULT_POINT').toUpperCase() },
+    name (): string { return this.$tc('RESULT_NAME').toUpperCase() },
+    correct (): string { return this.$tc('RESULT_CORRECT').toUpperCase() },
+    judge (): string { return this.$tc('RESULT_JUDGE').toUpperCase() },
     inputtedCharacterData (): InputtedCharacterData[] {
       return charactersStore.inputtedCharacterData
     },
@@ -90,7 +95,7 @@ $header-height: 100px;
             padding: 0 0 30px;
             font-size: 30px;
             @media screen and (max-width: 600px) {
-              font-size: 25px;
+              font-size: 20px;
               padding: 0 0 20px;
             }
           }
@@ -120,6 +125,15 @@ $header-height: 100px;
         tr.incorrect {
           &>td {
             color: #BC243C;
+          }
+        }
+        &_en {
+          tr {
+            th {
+              @media screen and (max-width: 600px) {
+                font-size: 16px;
+              }
+            }
           }
         }
       }
