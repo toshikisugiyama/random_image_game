@@ -1,72 +1,40 @@
-<template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        random_image_game
-      </h1>
-      <h2 class="subtitle">
-        名前をつけて早く呼ぶゲーム
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
-  </div>
+<template lang="pug">
+  main.main
+    h1.main__title 名前をつけて早く呼ぶゲーム
+    main-character
 </template>
 
-<script>
-import Logo from '~/components/Logo.vue'
-
-export default {
+<script lang="ts">
+import Vue from 'vue'
+import MainCharacter from '@/components/MainCharacter.vue'
+export default Vue.extend({
   components: {
-    Logo
+    MainCharacter
   }
-}
+})
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
+<style lang="scss" scoped>
+$height: 568px;
+$header-height: 100px;
+.main {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+  flex-wrap: wrap;
+  min-height: $height;
+  height: 100vh;
+  &__title {
+    font-size: 30px;
+    position: absolute;
+    top: $header-height;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 0;
+    @media screen and (max-width: 600px) {
+      font-size: 20px;
+    }
+  }
 }
 </style>
