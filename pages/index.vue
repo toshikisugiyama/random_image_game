@@ -78,6 +78,7 @@ $header-height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
+    user-select: none;
   }
   &__symbol {
     font-size: 300px;
