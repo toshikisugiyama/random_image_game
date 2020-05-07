@@ -2,18 +2,21 @@
   header.header
     .header__container
       app-header-mode-switch
-      app-header-reset(v-if="counter !== 0")
+      app-header-reset(v-if="counter!==0 && $route.name==='index'")
+      app-header-set(v-if="counter===0 && $route.name==='index'")
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import AppHeaderModeSwitch from '@/components/AppHeaderModeSwitch.vue'
 import AppHeaderReset from '@/components/AppHeaderReset.vue'
+import AppHeaderSet from '@/components/AppHeaderSet.vue'
 import { charactersStore } from '@/store'
 export default Vue.extend({
   components: {
     AppHeaderModeSwitch,
-    AppHeaderReset
+    AppHeaderReset,
+    AppHeaderSet
   },
   computed: {
     counter (): number {
