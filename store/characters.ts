@@ -1,6 +1,8 @@
 import { Module, VuexModule, Mutation } from 'vuex-module-decorators'
 import { Character } from '~/models/Character'
 import { InputtedCharacterData } from '~/models/InputtedCharacterData'
+const charactersNumber = 14
+const charactersUrl = 'https://raw.githubusercontent.com/toshikisugiyama/illustrator-works/e0ab9393179b0e91af2810c7677bb800195289b6'
 
 @Module({
   name: 'characters',
@@ -79,46 +81,17 @@ export default class Characters extends VuexModule {
     this.counter = 0
   }
 
-  characters: Character[] = [
-    {
-      id: 1,
-      image: require('@/static/images/0.png')
-    },
-    {
-      id: 2,
-      image: require('@/static/images/1.png')
-    },
-    {
-      id: 3,
-      image: require('@/static/images/2.png')
-    },
-    {
-      id: 4,
-      image: require('@/static/images/3.png')
-    },
-    {
-      id: 5,
-      image: require('@/static/images/4.png')
-    },
-    {
-      id: 6,
-      image: require('@/static/images/5.png')
-    },
-    {
-      id: 7,
-      image: require('@/static/images/6.png')
-    },
-    {
-      id: 8,
-      image: require('@/static/images/7.png')
-    },
-    {
-      id: 9,
-      image: require('@/static/images/8.png')
-    },
-    {
-      id: 10,
-      image: require('@/static/images/9.png')
+  createCharactersArray (charactersNumber: number) {
+    const characters: Array<Character> = []
+    for (let i: number = 1; i <= charactersNumber; i++) {
+      const id = i
+      const drawingId: string = id < 10 ? '0' + id.toString() : id.toString()
+      const image = `${charactersUrl}/drawing-${drawingId}/${drawingId}.svg`
+      const character: Character = { id, image }
+      characters.push(character)
     }
-  ]
+    return characters
+  }
+
+  characters: Character[] = [...this.createCharactersArray(charactersNumber)]
 }
