@@ -1,14 +1,30 @@
 <template lang="pug">
-  .header__switch
+  .header__switch(@click="toggleMode")
     .header__switch__frame
       .header__switch__button
-      span.mode
+      span.mode {{ modeStatus.toUpperCase() }}
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import { charactersStore } from '@/store'
 export default Vue.extend({
-
+  computed: {
+    isDark (): boolean {
+      return charactersStore.isDark
+    },
+    modeStatus (): string {
+      if (this.isDark) {
+        return 'light'
+      }
+      return 'dark'
+    }
+  },
+  methods: {
+    toggleMode (): void {
+      charactersStore.toggleMode()
+    }
+  }
 })
 </script>
 
@@ -27,7 +43,8 @@ $height: 30px;
     cursor: pointer;
     .mode {
       color: #fff;
-      margin: 0 10px;
+      margin: 0 5px;
+      font-size: 8px;
     }
   }
   &__button {

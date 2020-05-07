@@ -8,6 +8,12 @@ import { InputtedName } from '~/models/Inputtedname'
   namespaced: true
 })
 export default class Characters extends VuexModule {
+  isDark: boolean = true
+  @Mutation
+  toggleMode (): void {
+    this.isDark = !this.isDark
+  }
+
   currentNumber: number = 0
   @Mutation
   commitRandomNumber (num: number): void {
