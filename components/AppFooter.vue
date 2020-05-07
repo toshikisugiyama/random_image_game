@@ -5,8 +5,10 @@
     .footer__container.footer_beforegame(v-else-if="counter<=0")
       .footer_beforegame__button.footer__button(@click="showRule") あそびかた
       .footer_beforegame__button.footer__button(@click="startGame") スタート
+    .footer__container.footer_aftergame(v-else-if="remainingCount<=0")
+      .footer_aftergame__button.footer__button(@click="resetAll") もどる
     .footer__container.footer_game(v-else)
-      input.footer_game__input_name(v-model="inputtedName" autofocus)
+      input.footer_game__input_name(v-model="inputtedName" placeholder="名前を入力  " autofocus)
       .footer_game__button.footer__button(@click="moveOnNext") つぎへ
 </template>
 
@@ -14,6 +16,7 @@
 import Vue from 'vue'
 import { charactersStore } from '@/store'
 import { Character } from '~/models/Character'
+import { InputtedCharacterData } from '~/models/InputtedCharacterData'
 interface Data {
   inputtedName: string
 }
@@ -24,8 +27,11 @@ export default Vue.extend({
     }
   },
   computed: {
-    maxNumber () {
+    maxNumber (): number {
       return charactersStore.characters.length
+    },
+    remainingCount (): number {
+      return charactersStore.remainingCount
     },
     counter (): number {
       return charactersStore.counter
@@ -35,9 +41,20 @@ export default Vue.extend({
     },
     currentCharacter (): Character | undefined {
       return charactersStore.characters.find((character: Character) => character.id - 1 === this.currentNumber)
+    },
+    erratumStatus (): number {
+      return 0
+    },
+    inputtedCharacterData (): InputtedCharacterData[] {
+      return charactersStore.inputtedCharacterData
     }
   },
   methods: {
+    resetAll (): void {
+      charactersStore.resetCounter()
+      charactersStore.resetRemainingCount()
+      charactersStore.resetName()
+    },
     goToFront (): void {
       this.$router.push('/')
       charactersStore.resetCounter()
@@ -51,9 +68,11 @@ export default Vue.extend({
       this.inputtedName = ''
     },
     moveOnNext (): void {
-      this.addName()
+      this.addCharacterData()
       this.commitRandomNumber()
       this.incrementCounter()
+      this.calculateCount()
+      this.judgeName()
       this.inputtedName = ''
     },
     commitRandomNumber (): void {
@@ -62,15 +81,23 @@ export default Vue.extend({
       const randomNum = Math.floor(Math.random() * (max - min)) + min
       charactersStore.commitRandomNumber(randomNum)
     },
-    addName (): void {
-      charactersStore.addName({
+    addCharacterData (): void {
+      charactersStore.addCharacterData({
         id: this.counter,
         imageId: this.currentNumber,
-        name: this.inputtedName
+        name: this.inputtedName,
+        erratum: this.erratumStatus
       })
     },
     incrementCounter (): void {
       charactersStore.incrementCounter()
+    },
+    calculateCount (): void {
+      charactersStore.calculateCount()
+    },
+    judgeName (): void {
+      // console.log('全', this.inputtedCharacterData)
+      // console.log('被り', this.inputtedCharacterData.filter(item => item.imageId === this.currentNumber))
     }
   }
 })
@@ -118,9 +145,20 @@ $height: 100px;
       font-size: 18px;
       padding: 0 15px;
       width: 80%;
+      @media screen and (max-width: 600px) {
+        width: 80%;
+      }
     }
     &__button {
       width: 20%;
+      @media screen and (max-width: 600px) {
+        width: 30%;
+      }
+    }
+  }
+  &_aftergame {
+    &__button {
+      width: 100%;
     }
   }
   &__button {
@@ -135,6 +173,9 @@ $height: 100px;
     justify-content: center;
     align-items: center;
     transition: background-color 1s;
+    @media screen and (max-width: 600px) {
+      font-size: 15px;
+    }
   }
   &__button:hover {
     cursor: pointer;

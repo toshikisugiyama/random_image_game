@@ -2,14 +2,23 @@
   header.header
     .header__container
       app-header-mode-switch
+      app-header-reset(v-if="counter !== 0")
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import AppHeaderModeSwitch from '@/components/AppHeaderModeSwitch.vue'
+import AppHeaderReset from '@/components/AppHeaderReset.vue'
+import { charactersStore } from '@/store'
 export default Vue.extend({
   components: {
-    AppHeaderModeSwitch
+    AppHeaderModeSwitch,
+    AppHeaderReset
+  },
+  computed: {
+    counter (): number {
+      return charactersStore.counter
+    }
   }
 })
 </script>
@@ -30,6 +39,7 @@ $height: 80px;
     height: $height;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     width: 80%;
     max-width: 1264px;
     @media screen and (max-width: 600px) {
