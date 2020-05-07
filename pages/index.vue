@@ -1,5 +1,5 @@
 <template lang="pug">
-  main.main
+  main.main(:class="{'screen-fixed': isSetting}")
     h1.main__title {{ mainTitle }}
     .main__symbol.main__content(v-if="counter<=0") ?
     .main__finish.main__content(v-else-if="remainingCount<=0") {{ gameover }}
@@ -29,22 +29,6 @@ export default Vue.extend({
       if (this.counter <= 0) {
         return this.$tc('MAIN_TITLE').toUpperCase()
       }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-      return 'あと ' + this.remainingCount + ' 回'
-=======
-      return this.$tc('MAIN_MORE').toUpperCase() + ' ' + this.remainingCount + ' ' + this.$tc('MAIN_TIMES').toUpperCase()
-=======
-      return (this.$tc('MAIN_MORE') + ' ' + this.remainingCount + ' ' + this.$tc('MAIN_TIMES') + this.toPluralForm).toUpperCase()
-    },
-    toPluralForm (): string {
-      if (this.remainingCount !== 0 && this.remainingCount !== 1 && this.$i18n.locale === 'en') {
-        return 's'
-      }
-      return ''
->>>>>>> 1142e7a... implement count plural form for english version
-=======
       if (this.remainingCount === 0) {
         return ''
       }
@@ -55,12 +39,10 @@ export default Vue.extend({
         return this.remainingCount + ' ' + (this.$tc('MAIN_TIMES') + 's' + ' ' + this.$tc('MAIN_MORE')).toUpperCase()
       }
       return this.remainingCount + ' ' + (this.$tc('MAIN_MORE') + ' ' + this.$tc('MAIN_TIMES')).toUpperCase()
->>>>>>> c04071b... fix English
     },
     gameover (): string { return this.$tc('MAIN_FINISH').toUpperCase() },
     isSetting (): boolean {
       return charactersStore.isSetting
->>>>>>> 2edac51... implement language swtch from Japanese to English
     }
   }
 })
@@ -112,6 +94,13 @@ $header-height: 100px;
       padding: 0 10px;
     }
   }
+}
+.main.screen-fixed {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 .container.dark {
   .main {
