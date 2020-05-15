@@ -1,8 +1,8 @@
 import { Module, VuexModule, Mutation } from 'vuex-module-decorators'
 import { Character } from '~/models/Character'
 import { InputtedCharacterData } from '~/models/InputtedCharacterData'
-const charactersNumber = 14
-const charactersUrl = 'https://raw.githubusercontent.com/toshikisugiyama/illustrator-works/e0ab9393179b0e91af2810c7677bb800195289b6'
+const charactersNumber = 15
+const charactersUrl = 'https://raw.githubusercontent.com/toshikisugiyama/illustrator-works/master'
 
 @Module({
   name: 'characters',
