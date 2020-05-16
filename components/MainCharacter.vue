@@ -36,6 +36,10 @@ export default Vue.extend({
   &>img {
     object-fit: contain;
     animation: showCharacter .5s linear 0s;
+    @media screen and (min-width: 600px) {
+      width: 60vmin;
+      height: 60vmin;
+    }
   }
 }
 </style>
