@@ -16,7 +16,7 @@
     "acorn": "^7.1.1",
     "eslint": "^6.8.0",
     "kind-of": "^6.0.3",
-    "minimist": "^1.2.5",
+    "minimist": "^1.2.6",
     "nuxt": "^2.0.0",
     "nuxt-i18n": "^6.6.0",
     "vuex-module-decorators": "^0.16.1"
