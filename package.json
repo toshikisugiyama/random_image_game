@@ -17,7 +17,7 @@
     "eslint": "^6.8.0",
     "kind-of": "^6.0.3",
     "minimist": "^1.2.5",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.15.8",
     "nuxt-i18n": "^6.6.0",
     "vuex-module-decorators": "^0.16.1"
   },
